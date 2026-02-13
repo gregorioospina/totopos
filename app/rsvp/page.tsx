@@ -1,4 +1,6 @@
-import Card from "../_components/card";
+import Ceremony from "../_cards/ceremony";
+import DressCode from "../_cards/dress_code";
+import TCard from "../_components/card";
 import Grid from "../_components/grid";
 
 interface IRSVP {}
@@ -6,7 +8,20 @@ interface IRSVP {}
 const RSVP = (props: IRSVP) => {
 	return (
 		<div>
-			<Grid cards={[<Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />]}></Grid>
+			<Grid
+				cards={[
+					<TCard>
+						<Ceremony />
+					</TCard>,
+					<TCard>
+						<DressCode />
+					</TCard>,
+					<TCard />,
+					<TCard />,
+					<TCard />,
+					<TCard />,
+					<TCard />,
+				]}></Grid>
 		</div>
 	);
 };

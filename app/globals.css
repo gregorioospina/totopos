@@ -1,17 +1,77 @@
 @import "tailwindcss";
 
+@font-face {
+	font-family: "Body";
+	src: url("/fonts/body.otf") format("opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Title";
+	src: url("/fonts/title.TTF") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Header";
+	src: url("/fonts/headers.TTF") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Details";
+	src: url("/fonts/details.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
 :root {
 	--background: #fffffa;
 	--background-dark: #f4f2e2;
 	--foreground: #7a7442;
+	--foreground-light: #95916b;
 }
 
 @theme inline {
 	--color-background: var(--background);
 	--color-background-2: var(--background-dark);
 	--color-foreground: var(--foreground);
+	--color-foreground-light: var(--foreground-light);
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
+	--font-body: "Body", sans-serif;
+	--font-title: "Title", serif;
+	--font-header: "Header", serif;
+	--font-details: "Details", sans-serif;
+}
+
+@layer components {
+	.h1 {
+		@apply font-header text-2xl font-bold leading-tight;
+	}
+
+	.h2 {
+		@apply font-header text-xl leading-tight;
+	}
+
+	.h3 {
+		@apply font-header text-lg;
+	}
+	p,
+	.body {
+		@apply font-body text-base font-bold leading-relaxed;
+	}
+
+	.body-small {
+		@apply font-body text-sm leading-relaxed;
+	}
+
+	.details {
+		@apply font-details text-base leading-normal;
+	}
 }
 
 body {
