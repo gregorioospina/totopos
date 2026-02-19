@@ -5,7 +5,7 @@ const Pereira = (props: IPereira) => {
 		<div className="flex flex-col  gap-y-4 px-6 py-10">
 			<div>
 				<p className="h1">Lugar</p>
-				<p className="h3">Bienvenidos a Pereira, corazón del Eje Cafetero</p>
+				<p className="h3 highlight">Bienvenidos a Pereira, corazón del Eje Cafetero</p>
 			</div>
 			<p className="body">
 				Pereira es la capital de Risaralda y el corazón del Eje Cafetero colombiano, una región reconocida por sus paisajes montañosos, su cultura cafetera y la

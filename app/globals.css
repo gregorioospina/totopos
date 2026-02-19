@@ -33,6 +33,8 @@
 	--background-dark: #f4f2e2;
 	--foreground: #7a7442;
 	--foreground-light: #95916b;
+	--highlight-dark: #d44407;
+	--highlight: #f54900;
 }
 
 @theme inline {
@@ -40,6 +42,8 @@
 	--color-background-2: var(--background-dark);
 	--color-foreground: var(--foreground);
 	--color-foreground-light: var(--foreground-light);
+	--color-highlight: var(--highlight);
+	--color-highlight-dark: var(--highlight-dark);
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
 	--font-body: "Body", sans-serif;
@@ -50,7 +54,7 @@
 
 @layer components {
 	.h1 {
-		@apply font-header text-3xl font-bold leading-6;
+		@apply font-header text-4xl font-bold leading-8 text-highlight;
 	}
 
 	.h2 {
@@ -60,13 +64,22 @@
 	.h3 {
 		@apply font-body text-lg;
 	}
+
+	.h3.highlight {
+		@apply text-highlight;
+	}
+
+	a {
+		@apply text-xs underline bg-highlight/10 text-highlight p-2 rounded-md;
+	}
+
 	p,
 	.body {
 		@apply font-body text-sm md:text-base leading-relaxed;
 	}
 
 	.body-small {
-		@apply font-body text-sm leading-relaxed;
+		@apply font-body text-xs md:text-sm leading-relaxed;
 	}
 
 	.details {

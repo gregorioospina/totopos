@@ -7,7 +7,7 @@ const DressCode = (props: IDressCode) => {
 		<div className="flex flex-col gap-y-4 px-6 py-10">
 			<div>
 				<p className="h1">Dress code</p>
-				<p className="h3">El evento será formal</p>
+				<p className="h3 highlight">El evento será formal</p>
 			</div>
 			<p className="body">
 				El evento será al aire libre y el terreno es irregular, por lo que recomendamos a las mujeres usar zapatos de plataforma o tacón ancho para mayor

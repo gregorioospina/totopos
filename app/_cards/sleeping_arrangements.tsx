@@ -5,7 +5,7 @@ const SleepingArrangements = (props: ISleepingArrangements) => {
 		<div className="flex flex-col gap-y-4 px-6 py-10">
 			<div>
 				<p className="h1">Hospedaje</p>
-				<p className="h3">Opciones de alojamiento cerca de la celebración</p>
+				<p className="h3 highlight">Opciones de alojamiento cerca de la celebración</p>
 			</div>
 			<p className="body">
 				Les recomendamos hospedarse en la zona de <span className="font-bold">Cerritos</span>, para estar cerca de la{" "}
@@ -16,7 +16,7 @@ const SleepingArrangements = (props: ISleepingArrangements) => {
 					<div className="flex justify-between">
 						<p className="h3 font-bold">Airbnbs</p>
 						<a
-							className="text-xs underline bg-foreground/10 p-2 rounded-md"
+							className=""
 							target="__blank"
 							href="https://docs.google.com/spreadsheets/d/1f0n3pyHC3UUW6qA5im0WR-iMmeSkHzEi/edit?usp=sharing&ouid=113762363215732489077&rtpof=true&sd=true">
 							Ver lista de Airbnbs
@@ -28,7 +28,7 @@ const SleepingArrangements = (props: ISleepingArrangements) => {
 					{" "}
 					<div className="flex justify-between">
 						<p className="font-bold">Hotel Sonesta</p>{" "}
-						<a className="text-xs underline bg-foreground/10 p-2 rounded-md" target="__blank" href="https://www.sonestapereira.com/">
+						<a className="" target="__blank" href="https://www.sonestapereira.com/">
 							Ir a hotel Sonesta
 						</a>
 					</div>
@@ -40,10 +40,7 @@ const SleepingArrangements = (props: ISleepingArrangements) => {
 				<div className="flex flex-col gap-y-1">
 					<div className="flex justify-between">
 						<p className="font-bold">Apartamentos Cerritos Mall</p>
-						<a
-							className="text-xs underline bg-foreground/10 p-2 rounded-md"
-							target="__blank"
-							href="https://drive.google.com/file/d/1OogqANWktX2cz6gdQm50X1B4EdgAXanL/view?usp=sharing">
+						<a className="" target="__blank" href="https://drive.google.com/file/d/1OogqANWktX2cz6gdQm50X1B4EdgAXanL/view?usp=sharing">
 							Ver apartamentos
 						</a>
 					</div>

@@ -5,7 +5,7 @@ const Panorama = (props: IPanorama) => {
 		<div className="flex flex-col gap-y-4 px-6 py-10">
 			<div>
 				<p className="h1">Panorama de la zona</p>
-				<p className="h3">Información útil para tu visita</p>
+				<p className="h3 highlight">Información útil para tu visita</p>
 			</div>
 			<div className="flex flex-col gap-y-3">
 				<div className="flex flex-col gap-y-1">

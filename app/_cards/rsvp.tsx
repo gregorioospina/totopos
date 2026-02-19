@@ -35,9 +35,15 @@ export default function RSVP() {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch("/api/fetch-attendees")
+		fetch("/app/api/fetch-attendees")
 			.then((s) => s.json())
 			.then((c) => {
+				if (!c.attendees) {
+					console.error("No attendees in response:", c);
+					window.alert("Error al cargar los invitados. Por favor, intenta de nuevo más tarde.");
+					return;
+				}
+
 				const invitesMapped: Invitation[] = [];
 				const setArray: [string, number][] = [];
 
@@ -60,13 +66,12 @@ export default function RSVP() {
 						LastName1: a[2] === "N/A" ? null : a[2],
 						Name2: a[4] === "N/A" ? null : a[4],
 						LastName2: a[5] === "N/A" ? null : a[5],
-						WeddingParty: a[6] === "SI",
-						Party: a[7] === "SI",
-						Waitlist: a[8] === "SI",
-						Confirm1: a[9] === "N/A" ? undefined : a[9] === "SI",
-						Confirm2: a[10] === "N/A" ? undefined : a[10] === "SI",
-						CC1: a[11] === "N/A" ? null : a[11],
-						CC2: a[11] === "N/A" ? null : a[11],
+						Confirm1: a[6] === "N/A" ? undefined : a[6] === "SI",
+						Confirm2: a[7] === "N/A" ? undefined : a[7] === "SI",
+						CC1: a[8] === "N/A" ? null : a[8],
+						CC2: a[9] === "N/A" ? null : a[9],
+						Restrictions1: a[10] === "N/A" ? null : a[10],
+						Restrictions2: a[11] === "N/A" ? null : a[11],
 						index,
 					});
 				});
@@ -108,7 +113,7 @@ export default function RSVP() {
 	const handleSend = useCallback(() => {
 		if (!selectedInvitation) return;
 
-		fetch("/api/add-rsvp", {
+		fetch("/app/api/add-rsvp", {
 			method: "POST",
 			body: JSON.stringify({ ...selectedInvitation, CC1: inputCC1, CC2: inputCC2 }),
 		})
