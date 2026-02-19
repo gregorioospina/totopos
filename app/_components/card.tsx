@@ -7,7 +7,7 @@ interface ITCard {
 
 const TCard = ({ image = "/assets/FOTOLAGO.png", children }: ITCard) => {
 	return (
-		<div className="max-w-110 relative bg-background-2 aspect-8/16 shadow-lg rounded-md max-h-220">
+		<div className="max-w-110 relative bg-background-2 aspect-8/16 shadow-[0pt_4pt_10px_-7px_#0000007a] rounded-md max-h-220">
 			{children}
 			<div className="absolute bottom-0 h-60 left-0 right-0">
 				<Image className="object-cover object-top" src={image} fill alt="foto lago" />

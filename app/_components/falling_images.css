@@ -1,0 +1,6 @@
+.falling-images-container {
+	position: relative;
+	width: 100svw;
+	height: 80svh;
+	overflow: visible;
+}

@@ -1,28 +1,7 @@
-import Ceremony from "../_cards/ceremony";
-import DressCode from "../_cards/dress_code";
-import TCard from "../_components/card";
-import Grid from "../_components/grid";
-
-interface IRSVP {}
-
-const RSVP = (props: IRSVP) => {
+export default function Home() {
 	return (
-		<div>
-			<Grid
-				cards={[
-					<TCard>
-						<Ceremony />
-					</TCard>,
-					<TCard>
-						<DressCode />
-					</TCard>,
-					<TCard />,
-					<TCard />,
-					<TCard />,
-					<TCard />,
-					<TCard />,
-				]}></Grid>
+		<div className="flex min-h-screen items-center justify-center">
+			<main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16  sm:items-start"></main>
 		</div>
 	);
-};
-export default RSVP;
+}

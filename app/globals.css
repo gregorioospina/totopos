@@ -50,11 +50,11 @@
 
 @layer components {
 	.h1 {
-		@apply font-header text-2xl font-bold leading-tight;
+		@apply font-header text-3xl font-light;
 	}
 
 	.h2 {
-		@apply font-header text-xl leading-tight;
+		@apply font-header text-xl font-light;
 	}
 
 	.h3 {
