@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect } from "react";
 import Ceremony from "./_cards/ceremony";
 import DressCode from "./_cards/dress_code";
@@ -6,6 +7,7 @@ import SleepingArrangements from "./_cards/sleeping_arrangements";
 import TCard from "./_components/card";
 import Grid from "./_components/grid";
 import Heroe from "./_components/heroe";
+import RSVP from "./_components/rsvp";
 import { useHideStore } from "./_store/useHideStore";
 
 interface IHome {}
@@ -26,6 +28,9 @@ const Home = (props: IHome) => {
 				hide={hide}
 				heroe={<Heroe />}
 				cards={[
+					<TCard noImage>
+						<Image src={"/assets/invitacion.png"} fill alt="foto lago" className="object-contain" />
+					</TCard>,
 					<TCard>
 						<Ceremony />
 					</TCard>,
@@ -35,7 +40,9 @@ const Home = (props: IHome) => {
 					<TCard>
 						<SleepingArrangements />
 					</TCard>,
-					<TCard />,
+					<TCard>
+						<RSVP />
+					</TCard>,
 					<TCard />,
 					<TCard />,
 					<TCard />,

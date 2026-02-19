@@ -37,7 +37,7 @@ const FallingImages = () => {
 		{
 			src: "/assets/them/aisle.png",
 			alt: "Aisle",
-			finalPosition: { top: "65%", left: "5%" },
+			finalPosition: { top: "45%", left: "40%" },
 			size: { width: 400, height: 400 },
 			delay: 2.0,
 		},
