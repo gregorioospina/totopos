@@ -116,7 +116,7 @@ const Map = ({ className = "" }: MapProps) => {
 
 			// Define map options.
 			const mapOptions = {
-				center: { lng: -74.02801435807748, lat: 4.686403975979731 },
+				center: { lng: -75.813235, lat: 4.808584 },
 				zoom: 15,
 				mapId: "DEMO_MAP_ID",
 				// Disable ALL user interactions and controls
@@ -146,9 +146,9 @@ const Map = ({ className = "" }: MapProps) => {
 
 			// Add a marker in the center of the map
 			const marker = new Marker({
-				position: { lng: -74.02801435807748, lat: 4.686403975979731 },
+				position: { lng: -75.813235, lat: 4.808584 },
 				map: map,
-				title: "Center Location",
+				title: "Hacienda San Jorge",
 			});
 
 			mapInstanceRef.current = map;

@@ -2,10 +2,13 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import Ceremony from "./_cards/ceremony";
+import Contactos from "./_cards/contactos";
 import DressCode from "./_cards/dress_code";
+import Panorama from "./_cards/panorama";
 import Pereira from "./_cards/pereira";
 import RSVP from "./_cards/rsvp";
 import SleepingArrangements from "./_cards/sleeping_arrangements";
+import Turismo from "./_cards/turismo";
 import TCard from "./_components/card";
 import Grid from "./_components/grid";
 import Heroe from "./_components/heroe";
@@ -35,20 +38,27 @@ const Home = (props: IHome) => {
 					<TCard>
 						<Ceremony />
 					</TCard>,
-					<TCard>
-						<DressCode />
+					<TCard image="/assets/pereira.webp" imageClassName="object-center object-cover">
+						<Pereira />
 					</TCard>,
 					<TCard>
 						<SleepingArrangements />
 					</TCard>,
 					<TCard>
-						<RSVP />
+						<DressCode />
 					</TCard>,
 					<TCard>
-						<Pereira />
+						<Panorama />
 					</TCard>,
-					<TCard />,
-					<TCard />,
+					<TCard>
+						<Turismo />
+					</TCard>,
+					<TCard>
+						<Contactos />
+					</TCard>,
+					<TCard>
+						<RSVP />
+					</TCard>,
 				]}></Grid>
 		</div>
 	);

@@ -11,27 +11,44 @@ const Heroe = (props: IHeroe) => {
 		<div className="relative overflow-visible">
 			<div className="flex flex-col absolute top-1/2 px-[7%] translate-y-[-50%] z-40">
 				<p className="text-white text-8xl md:text-[5rem] leading-16  font-title font-black">Diego</p>
-				<motion.p
-					className="text-orange-500  leading-32 md:leading-52 font-details text-[10rem] md:text-[15rem]"
+				<motion.img
+					src="/assets/favicon_turtle.png"
+					alt="tortuga"
+					width={150}
+					height={150}
+					className="object-contain"
+					initial={{ opacity: 0, x: "calc(50vw - 50% - 7vw)" }}
 					animate={
 						hide
 							? {
-									scale: [1, 1.1, 1],
-									textShadow: ["0 0 0px rgba(249, 115, 22, 0)", "0 0 30px rgba(249, 115, 22, 0.8)", "0 0 0px rgba(249, 115, 22, 0)"],
+									opacity: [0.6, 1, 0.6],
+									x: "calc(50vw - 50% - 7vw)",
 								}
-							: { scale: 1, textShadow: "0 0 0px rgba(249, 115, 22, 0)" }
+							: { opacity: 1, x: 0 }
 					}
 					transition={
 						hide
 							? {
-									duration: 1,
-									repeat: 3,
-									ease: "easeInOut",
+									opacity: {
+										duration: 0.7,
+										repeat: 2,
+										ease: "easeInOut",
+									},
+									x: {
+										delay: 2,
+										duration: 0.7,
+										ease: "easeOut",
+									},
 								}
-							: {}
-					}>
-					&
-				</motion.p>
+							: {
+									x: {
+										delay: 0,
+										duration: 0.7,
+										ease: "easeOut",
+									},
+								}
+					}
+				/>
 				<p className="text-white md:-mt-5 -mt-2  text-8xl md:text-[5rem] leading-16  font-title font-black">Maca</p>
 			</div>
 			<p className=""></p>
