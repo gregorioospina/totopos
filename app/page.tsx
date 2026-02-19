@@ -3,11 +3,12 @@ import Image from "next/image";
 import { useEffect } from "react";
 import Ceremony from "./_cards/ceremony";
 import DressCode from "./_cards/dress_code";
+import Pereira from "./_cards/pereira";
+import RSVP from "./_cards/rsvp";
 import SleepingArrangements from "./_cards/sleeping_arrangements";
 import TCard from "./_components/card";
 import Grid from "./_components/grid";
 import Heroe from "./_components/heroe";
-import RSVP from "./_components/rsvp";
 import { useHideStore } from "./_store/useHideStore";
 
 interface IHome {}
@@ -43,7 +44,9 @@ const Home = (props: IHome) => {
 					<TCard>
 						<RSVP />
 					</TCard>,
-					<TCard />,
+					<TCard>
+						<Pereira />
+					</TCard>,
 					<TCard />,
 					<TCard />,
 				]}></Grid>

@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 declare global {
 	interface Window {
 		google: typeof google;
+		googleMapsLoading?: boolean;
 	}
 }
 
@@ -25,6 +26,22 @@ const Map = ({ className = "" }: MapProps) => {
 				return;
 			}
 
+			// Check if script is already being loaded or exists in DOM
+			const existingScript = document.querySelector('script[src*="maps.googleapis.com"]');
+			if (existingScript || window.googleMapsLoading) {
+				// Wait for the existing script to load
+				const checkGoogleLoaded = setInterval(() => {
+					if (typeof google !== "undefined" && google.maps) {
+						clearInterval(checkGoogleLoaded);
+						createMap();
+					}
+				}, 100);
+				return;
+			}
+
+			// Mark as loading
+			window.googleMapsLoading = true;
+
 			// Load Google Maps API
 			const script = document.createElement("script");
 			script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&v=weekly&libraries=maps`;
@@ -32,50 +49,45 @@ const Map = ({ className = "" }: MapProps) => {
 			script.defer = true;
 
 			script.onload = async () => {
+				window.googleMapsLoading = false;
 				await createMap();
 			};
 
 			script.onerror = () => {
+				window.googleMapsLoading = false;
 				console.error("Google Maps JavaScript API could not load.");
 			};
 
 			document.head.appendChild(script);
-
-			// Cleanup function to remove script
-			return () => {
-				if (script.parentNode) {
-					script.parentNode.removeChild(script);
-				}
-			};
 		};
 
 		const createMap = async () => {
-			if (!mapRef.current) return;
+			if (!mapRef.current || mapInstanceRef.current) return;
 
 			const { Map: GoogleMap, StyledMapType } = (await google.maps.importLibrary("maps")) as google.maps.MapsLibrary;
 			const { Marker } = (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
 
-			// Define the custom map style using the provided colors.
+			// Define the custom map style using the globals.css colors.
 			const customMapStyle = [
 				{
 					featureType: "water",
 					elementType: "geometry",
-					stylers: [{ color: "#335561" }],
+					stylers: [{ color: "#95916b" }], // foreground-light
 				},
 				{
 					featureType: "landscape",
 					elementType: "geometry",
-					stylers: [{ color: "#CFC4BB" }],
+					stylers: [{ color: "#f4f2e2" }], // background-dark
 				},
 				{
 					featureType: "road",
 					elementType: "geometry",
-					stylers: [{ color: "#FFFFFF" }],
+					stylers: [{ color: "#fffffa" }], // background
 				},
 				{
 					featureType: "road",
 					elementType: "labels.text.fill",
-					stylers: [{ color: "#335561" }],
+					stylers: [{ color: "#7a7442" }], // foreground
 				},
 				{
 					featureType: "road",
@@ -93,7 +105,7 @@ const Map = ({ className = "" }: MapProps) => {
 				{
 					featureType: "administrative",
 					elementType: "labels.text.fill",
-					stylers: [{ color: "#335561" }],
+					stylers: [{ color: "#7a7442" }], // foreground
 				},
 			];
 
@@ -104,7 +116,7 @@ const Map = ({ className = "" }: MapProps) => {
 
 			// Define map options.
 			const mapOptions = {
-				center: { lng: -74.02801435807748, lat: 4.686403975979731 }, // Centered on Paris
+				center: { lng: -74.02801435807748, lat: 4.686403975979731 },
 				zoom: 15,
 				mapId: "DEMO_MAP_ID",
 				// Disable ALL user interactions and controls
@@ -146,9 +158,8 @@ const Map = ({ className = "" }: MapProps) => {
 
 		// Cleanup function
 		return () => {
-			if (mapInstanceRef.current) {
-				mapInstanceRef.current = null;
-			}
+			// Don't destroy the map instance, just clear the reference
+			mapInstanceRef.current = null;
 		};
 	}, []);
 
