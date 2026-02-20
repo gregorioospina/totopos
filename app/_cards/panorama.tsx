@@ -10,20 +10,20 @@ const Panorama = (props: IPanorama) => {
 			<div className="flex flex-col gap-y-3">
 				<div className="flex flex-col gap-y-1">
 					<p className="font-bold">Ciudad y aeropuerto</p>
-					<p className="body">
+					<p className="body-small">
 						Pereira es la puerta de entrada al Eje Cafetero; llegan por el <span className="font-semibold">Aeropuerto Internacional Matecaña (PEI)</span>, a 15
 						min de Cerritos.
 					</p>
-					<p className="body">
+					<p className="body-small">
 						Taxis oficiales en llegadas y disponibilidad de Uber; trayecto suele estar entre <span className="font-semibold">COP $30.000–$40.000</span>.
 					</p>
 				</div>
 				<div className="flex flex-col gap-y-1">
 					<p className="font-bold">Clima</p>
-					<p className="body">
-						Cálido‐templado y húmedo todo el año; <span className="font-semibold">24–27 °C de día / 17–19 °C de noche</span> aprox., con lluvias frecuentes.
+					<p className="body-small">
+						Cálido-templado y húmedo todo el año; <span className="font-semibold">24–27 °C de día / 17–19 °C de noche</span> aprox., con lluvias frecuentes.
 					</p>
-					<p className="body">Llevar impermeable ligero y zapatos con suela antideslizante.</p>
+					<p className="body-small">Llevar impermeable ligero y zapatos con suela antideslizante.</p>
 				</div>
 			</div>
 		</div>

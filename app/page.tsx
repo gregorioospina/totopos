@@ -6,7 +6,6 @@ import Contactos from "./_cards/contactos";
 import DressCode from "./_cards/dress_code";
 import Panorama from "./_cards/panorama";
 import Pereira from "./_cards/pereira";
-import RSVP from "./_cards/rsvp";
 import SleepingArrangements from "./_cards/sleeping_arrangements";
 import Turismo from "./_cards/turismo";
 import TCard from "./_components/card";
@@ -55,9 +54,6 @@ const Home = (props: IHome) => {
 					</TCard>,
 					<TCard>
 						<Contactos />
-					</TCard>,
-					<TCard>
-						<RSVP />
 					</TCard>,
 				]}></Grid>
 		</div>

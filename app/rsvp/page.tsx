@@ -1,7 +1,11 @@
+import RSVP from "@/_cards/rsvp";
+
 export default function Home() {
 	return (
-		<div className="flex min-h-screen items-center justify-center">
-			<main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16  sm:items-start"></main>
+		<div className="z-10 relative py-20 flex justify-center">
+			<div className="md:max-w-150 md:w-1/2 w-[90svw] relative bg-background-2 h-[80svh] md:aspect-12/16 shadow-[0pt_4pt_10px_-7px_#0000007a] rounded-md max-h-[90%]">
+				<RSVP />
+			</div>
 		</div>
 	);
 }

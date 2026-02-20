@@ -25,24 +25,30 @@ const Grid = ({ cards, heroe, hide }: IGrid) => {
 			<div className="hidden md:flex md:flex-col md:w-full h-screen overflow-y-scroll snap-y snap-mandatory">
 				{heroe ? <div className="flex w-full snap-start">{heroe}</div> : null}
 				<div className="flex flex-1 gap-x-5 justify-center">
-					<div className="w-1/2 max-w-120 flex last-of-type::pb-10 flex-col gap-20 px-4">
+					<div className="w-1/2 max-w-120 flex last-of-type::pb-10 flex-col gap-10 px-4">
 						{cards
 							.filter((_, index) => index % 2 === 0)
 							.map((card, index) => (
 								<div
 									key={index * 2}
-									className={["snap-start  transition-opacity duration-700  shrink-0 pt-30 pb-10", hide ? "opacity-0" : "opacity-100"].join(" ")}>
+									className={[
+										"snap-start -mb-20 transition-opacity duration-700  shrink-0 pt-18 flex items-end pb-10",
+										hide ? "opacity-0" : "opacity-100",
+									].join(" ")}>
 									{card}
 								</div>
 							))}
 					</div>
-					<div className="w-1/2 max-w-120 flex last-of-type:pb-10 pb-10 flex-col gap-20 px-4">
+					<div className="w-1/2 max-w-120 flex last-of-type:pb-10 pb-10 flex-col gap-5 px-4">
 						{cards
 							.filter((_, index) => index % 2 === 1)
 							.map((card, index) => (
 								<div
 									key={index * 2 + 1}
-									className={["snap-start transition-opacity duration-700 shrink-0 pt-30 pb-10", hide ? "opacity-0" : "opacity-100"].join(" ")}>
+									className={[
+										"snap-start -mb-20 transition-opacity duration-700  shrink-0 pt-18 flex items-center pb-10",
+										hide ? "opacity-0" : "opacity-100",
+									].join(" ")}>
 									{card}
 								</div>
 							))}

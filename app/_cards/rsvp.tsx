@@ -35,7 +35,7 @@ export default function RSVP() {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch("/app/api/fetch-attendees")
+		fetch("/api/fetch-attendees")
 			.then((s) => s.json())
 			.then((c) => {
 				if (!c.attendees) {
@@ -113,7 +113,7 @@ export default function RSVP() {
 	const handleSend = useCallback(() => {
 		if (!selectedInvitation) return;
 
-		fetch("/app/api/add-rsvp", {
+		fetch("/api/add-rsvp", {
 			method: "POST",
 			body: JSON.stringify({ ...selectedInvitation, CC1: inputCC1, CC2: inputCC2 }),
 		})

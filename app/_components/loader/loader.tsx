@@ -47,7 +47,7 @@ const Loader = ({ opaque, fitContainer, open }: ILoader) => {
 			].join(" ")}>
 			{showIcon && (
 				<Image
-					src="/assets/icon.png"
+					src="/assets/favicon_turtle.png"
 					alt="Loading"
 					width={64}
 					height={64}

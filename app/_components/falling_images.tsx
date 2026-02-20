@@ -1,5 +1,6 @@
 "use client";
 
+import { useBreakpoint } from "@/_hooks/useGPTBreakpoint";
 import { motion } from "motion/react";
 import Image from "next/image";
 import "./falling_images.css";
@@ -19,57 +20,120 @@ interface ImageConfig {
 }
 
 const FallingImages = () => {
-	const images: ImageConfig[] = [
+	const { isMd } = useBreakpoint();
+
+	const mobileImages: ImageConfig[] = [
 		{
 			src: "/assets/them/aisle.png",
 			alt: "Aisle",
 			finalPosition: { top: "0%", left: "0%" },
-			size: { width: 400, height: 400 },
+			size: { width: 300, height: 300 },
 			delay: 2.0,
 		},
 		{
-			src: "/assets/them/ring.png",
-			alt: "Ring",
+			src: "/assets/them/trees.png",
+			alt: "Trees",
 			finalPosition: { top: "35%", left: "3%" },
-			size: { width: 250, height: 250 },
+			size: { width: 200, height: 350 },
 			delay: 2.3,
-		},
-		{
-			src: "/assets/them/aisle.png",
-			alt: "Aisle",
-			finalPosition: { top: "45%", left: "40%" },
-			size: { width: 400, height: 400 },
-			delay: 2.0,
 		},
 		{
 			src: "/assets/them/seals.png",
 			alt: "Seals",
 			finalPosition: { top: "10%", left: "50%" },
-			size: { width: 180, height: 180 },
+			size: { width: 150, height: 150 },
 			delay: 2.6,
 		},
 		{
 			src: "/assets/them/ring.png",
 			alt: "Ring",
-			finalPosition: { top: "45%", left: "60%" },
-			size: { width: 250, height: 250 },
+			finalPosition: { top: "70%", left: "0%" },
+			size: { width: 200, height: 200 },
 			delay: 2.3,
+		},
+	];
+
+	const desktopImages: ImageConfig[] = [
+		{
+			src: "/assets/them/aisle.png",
+			alt: "Aisle",
+			finalPosition: { top: "0%", left: "0%" },
+			size: { width: 500, height: 500 },
+			delay: 2.0,
+		},
+		{
+			src: "/assets/them/trees.png",
+			alt: "Trees",
+			finalPosition: { top: "5%", left: "75%" },
+			size: { width: 350, height: 600 },
+			delay: 2.2,
 		},
 		{
 			src: "/assets/them/ring.png",
 			alt: "Ring",
-			finalPosition: { top: "70%", left: "00%" },
-			size: { width: 250, height: 250 },
-			delay: 2.3,
+			finalPosition: { top: "10%", left: "45%" },
+			size: { width: 300, height: 300 },
+			delay: 2.4,
+		},
+		{
+			src: "/assets/them/sombrero.png",
+			alt: "Sombrero",
+			finalPosition: { top: "35%", left: "3%" },
+			size: { width: 350, height: 350 },
+			delay: 2.1,
 		},
 		{
 			src: "/assets/them/seals.png",
 			alt: "Seals",
-			finalPosition: { top: "80%", left: "0%" },
-			size: { width: 180, height: 180 },
+			finalPosition: { top: "40%", left: "85%" },
+			size: { width: 250, height: 250 },
+			delay: 2.5,
+		},
+		{
+			src: "/assets/them/aisle.png",
+			alt: "Aisle",
+			finalPosition: { top: "45%", left: "40%" },
+			size: { width: 450, height: 450 },
+			delay: 2.3,
+		},
+		{
+			src: "/assets/them/ring.png",
+			alt: "Ring",
+			finalPosition: { top: "55%", left: "65%" },
+			size: { width: 300, height: 300 },
 			delay: 2.6,
 		},
+		{
+			src: "/assets/them/trees.png",
+			alt: "Trees",
+			finalPosition: { top: "60%", left: "15%" },
+			size: { width: 300, height: 500 },
+			delay: 2.7,
+		},
+		{
+			src: "/assets/them/sombrero.png",
+			alt: "Sombrero",
+			finalPosition: { top: "75%", left: "0%" },
+			size: { width: 350, height: 350 },
+			delay: 2.2,
+		},
+		{
+			src: "/assets/them/seals.png",
+			alt: "Seals",
+			finalPosition: { top: "80%", left: "50%" },
+			size: { width: 250, height: 250 },
+			delay: 2.8,
+		},
+		{
+			src: "/assets/them/ring.png",
+			alt: "Ring",
+			finalPosition: { top: "85%", left: "80%" },
+			size: { width: 280, height: 280 },
+			delay: 2.4,
+		},
 	];
+
+	const images = isMd ? desktopImages : mobileImages;
 
 	return (
 		<section className="falling-images-container">
