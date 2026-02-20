@@ -13,7 +13,7 @@ const Grid = ({ cards, heroe, hide }: IGrid) => {
 			{/* Mobile: Single column with snap scroll and 60px overflow preview */}
 			<div className="md:hidden w-full h-screen overflow-y-scroll snap-y snap-mandatory pb-15">
 				<div className="flex flex-col gap-4 px-[5%]">
-					{heroe ? <div className="flex w-full ml-[-5%] snap-start">{heroe}</div> : null}
+					{heroe ? <div className="flex w-full snap-start">{heroe}</div> : null}
 					{cards.map((card, index) => (
 						<div key={index} className={["snap-start  transition-opacity duration-700  shrink-0 xs:pt-10 pt-20", hide ? "opacity-0" : "opacity-100"].join(" ")}>
 							{card}
