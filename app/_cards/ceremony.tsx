@@ -28,7 +28,7 @@ const Ceremony = (props: ICeremony) => {
 						<div className="border bg-foreground-light border-white p-1 text-center text-white text-2xl aspect-4/3 flex items-start justify-start">7</div>
 					</div>
 				</div>
-				<div className=" grid grid-cols-2 gap-y-4 px-6 py-10">
+				<div className=" grid grid-cols-2 gap-y-4 px-2 py-10">
 					<div className="flex flex-col">
 						<p className="h3 font-semibold">Lugar</p>
 						<p>Hacienda San Jorge</p>
@@ -36,7 +36,7 @@ const Ceremony = (props: ICeremony) => {
 							Cerritos, <span className="font-bold">Pereira</span>
 						</p>
 					</div>
-					<div className="flex flex-col">
+					<div className="flex flex-col items-end">
 						<p className="h3 font-semibold">Horario</p>
 						<p>4:00 p.m. - Ceremonia</p>
 						<p>5:30 p.m. - Coctel</p>

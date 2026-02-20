@@ -54,7 +54,7 @@
 
 @layer components {
 	.h1 {
-		@apply font-header text-4xl font-bold leading-8 text-highlight;
+		@apply font-header text-3xl md:text-4xl font-bold leading-8 text-highlight;
 	}
 
 	.h2 {
@@ -62,7 +62,7 @@
 	}
 
 	.h3 {
-		@apply font-body text-lg;
+		@apply font-body text-lg leading-5;
 	}
 
 	.h3.highlight {
@@ -70,7 +70,7 @@
 	}
 
 	a {
-		@apply text-xs underline bg-highlight/10 text-highlight p-2 rounded-md;
+		@apply text-xs underline bg-highlight/10 text-highlight px-3 py-1 rounded-md;
 	}
 
 	p,
