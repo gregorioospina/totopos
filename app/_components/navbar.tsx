@@ -10,7 +10,7 @@ const Navbar = (props: INavbar) => {
 	return (
 		<div
 			className={[
-				"fixed z-50 top-5 left-5 right-5 md:left-[10%] md:right-[10%] shadow-lg p-1 h-10 rounded-lg transition-opacity duration-700 bg-background-2",
+				"fixed z-50 md:top-5 top-3 left-5 right-5 md:left-[10%] md:right-[10%] shadow-lg p-1 h-10 rounded-lg transition-opacity duration-700 bg-background-2",
 				hide ? "opacity-0" : "opacity-100",
 			].join(" ")}>
 			<Link href={"/"} className="h-8 absolute left-0 bg-transparent no-underline top-1 bottom-1 w-20">
