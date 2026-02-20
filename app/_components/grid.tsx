@@ -17,7 +17,7 @@ const Grid = ({ cards, heroe, hide }: IGrid) => {
 					{cards.map((card, index) => (
 						<div
 							key={index}
-							className={["snap-start px-[5%] transition-opacity duration-700  shrink-0 xs:pt-10 pt-20", hide ? "opacity-0" : "opacity-100"].join(" ")}>
+							className={["snap-start px-[5%] transition-opacity duration-700  shrink-0 pt-22 md:pt-20", hide ? "opacity-0" : "opacity-100"].join(" ")}>
 							{card}
 						</div>
 					))}
