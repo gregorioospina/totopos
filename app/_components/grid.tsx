@@ -12,10 +12,12 @@ const Grid = ({ cards, heroe, hide }: IGrid) => {
 		<div className={["flex transition-opacity flex-col duration-700 items-center"].join(" ")}>
 			{/* Mobile: Single column with snap scroll and 60px overflow preview */}
 			<div className="md:hidden w-full h-screen overflow-y-scroll snap-y snap-mandatory pb-15">
-				<div className="flex flex-col gap-4 px-[5%]">
+				<div className="flex flex-col gap-4 ">
 					{heroe ? <div className="flex w-full snap-start">{heroe}</div> : null}
 					{cards.map((card, index) => (
-						<div key={index} className={["snap-start  transition-opacity duration-700  shrink-0 xs:pt-10 pt-20", hide ? "opacity-0" : "opacity-100"].join(" ")}>
+						<div
+							key={index}
+							className={["snap-start px-[5%] transition-opacity duration-700  shrink-0 xs:pt-10 pt-20", hide ? "opacity-0" : "opacity-100"].join(" ")}>
 							{card}
 						</div>
 					))}
