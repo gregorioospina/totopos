@@ -12,7 +12,7 @@ const Heroe = (props: IHeroe) => {
 			<div className="flex flex-col absolute top-1/2 px-[7%] translate-y-[-50%] z-40">
 				<p className="text-white text-8xl md:text-[5rem] leading-16  font-title font-black">Diego</p>
 				<motion.img
-					src="/assets/favicon_turtle.png"
+					src="/assets/loading_turtle.png"
 					alt="tortuga"
 					width={150}
 					height={150}

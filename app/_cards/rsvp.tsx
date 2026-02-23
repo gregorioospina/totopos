@@ -172,16 +172,20 @@ export default function RSVP() {
 			<div className="w-full mb-10">
 				<div className="w-full flex justify-between mb-1">
 					<p className="text-xs md:text-sm uppercase font-extralight tracking-wider">{title()}</p>
-					<button
-						onClick={() => {
-							setSelectedInvitation(null);
-							setStep("SEARCH");
-							setNameToSearch("");
-							setPreliminaryResults([]);
-						}}
-						className="bg-none text-sm font-light border-none underline">
-						Volver a empezar
-					</button>
+					{step != "SEARCH" ? (
+						<button
+							onClick={() => {
+								setSelectedInvitation(null);
+								setStep("SEARCH");
+								setNameToSearch("");
+								setPreliminaryResults([]);
+							}}
+							className="bg-none text-sm font-light border-none underline">
+							Volver a empezar
+						</button>
+					) : (
+						<div></div>
+					)}
 				</div>
 				<div className="w-full relative rounded-full h-2 bg-foreground/30">
 					<div className={`${length()} rounded-full h-full bg-foreground transition-all`}></div>
@@ -266,7 +270,11 @@ export default function RSVP() {
 								responder por todo tu grupo en la siguiente página
 							</p>
 						</div>
-						<input className="border border-gray-300 rounded-md p-2" onChange={(e) => setNameToSearch(e.target.value ?? "")} placeholder="Escribe tu nombre" />
+						<input
+							className="border border-foreground/30 rounded-md p-2"
+							onChange={(e) => setNameToSearch(e.target.value ?? "")}
+							placeholder="Escribe tu nombre"
+						/>
 						<button
 							disabled={nameToSearch.length < 3}
 							onClick={handleSearch}
@@ -292,7 +300,7 @@ export default function RSVP() {
 											name="invitation-to-rsvp-radio"
 											type="radio"
 											value={name}
-											className="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-slate-400 transition-all"
+											className="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-foreground/30 checked:border-foreground/40 transition-all"
 											onChange={() => {
 												const index = invitationMap.get(name);
 												if (index) {
@@ -300,9 +308,9 @@ export default function RSVP() {
 												}
 											}}
 										/>
-										<span className="absolute bg-slate-800 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
+										<span className="absolute bg-foreground w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
 									</label>
-									<label className="text-slate-600 cursor-pointer text-base">{name}</label>
+									<label className="cursor-pointer text-base">{name}</label>
 								</div>
 							))}
 						</div>
@@ -327,7 +335,7 @@ export default function RSVP() {
 							<div className="flex flex-col gap-y-2 mt-4">
 								<p className="uppercase font-extralight text-sm tracking-wide">Cédula de {selectedInvitation?.Name1}</p>
 								<input
-									className="border border-gray-300 rounded-md p-2"
+									className="border border-foreground/30 rounded-md p-2"
 									onChange={(e) => setInputCC1(e.target.value ?? "")}
 									placeholder="Escribe la cédula"
 									value={inputCC1}
@@ -338,7 +346,7 @@ export default function RSVP() {
 							<div className="flex flex-col gap-y-2">
 								<p className="uppercase font-extralight text-sm tracking-wide">Cédula de {selectedInvitation?.Name2}</p>
 								<input
-									className="border border-gray-300 rounded-md p-2"
+									className="border border-foreground/30 rounded-md p-2"
 									onChange={(e) => setInputCC2(e.target.value ?? "")}
 									placeholder="Escribe la cédula"
 									value={inputCC2}
@@ -389,7 +397,7 @@ export default function RSVP() {
 						window.location.reload();
 					}}>
 					<div className="relative flex h-80 w-full items-center justify-center">
-						<img src={"/assets/momito.png"} alt="Thank you" className="object-contain h-full" />
+						<img src={"/assets/DTORTUGAM.png"} alt="Thank you" className="object-contain h-full" />
 					</div>
 					<div className="flex justify-center">
 						<Link href="/" className="tracking-wider text-sm underline">
