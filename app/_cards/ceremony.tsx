@@ -2,12 +2,12 @@ interface ICeremony {}
 
 const Ceremony = (props: ICeremony) => {
 	return (
-		<div className="flex flex-col gap-y-4 px-6 py-10">
-			<div className="flex flex-col">
-				<p className="h1">Ceremonia y celebración</p>
+		<div className="flex flex-col gap-y-4 ">
+			<div className="flex flex-col px-6 pt-6 md:pt-10">
+				<p className="h1">Ceremonia</p>
 			</div>
 			<div className="flex flex-col">
-				<p className="text-center h2 font-bold">Junio 2026</p>
+				<p className="text-center h2 font-body font-bold">Junio 2026</p>
 				<div className="relative">
 					{/* MATRIMONIO text absolutely centered */}
 					<div className="absolute top-11 inset-0 flex items-center justify-center pointer-events-none z-10">
@@ -35,14 +35,16 @@ const Ceremony = (props: ICeremony) => {
 						</div>
 					</div>
 				</div>
-				<p className="h2 pt-4 text-highlight  leading-5 font-black">VIERNES</p>
+			</div>
+			<div className="px-6 pb-6 md:pb-10">
+				<p className="h2 pt-2 text-highlight font-body leading-6 font-black">VIERNES</p>
 				<div className=" grid grid-cols-2 gap-y-4 px-0 pb-9">
 					<div className="flex flex-col">
 						<p className="h3 font-semibold">Lugar</p>
 						<p className="leading-5">Sazagua Hotel Boutique</p>
 						<p className="leading-5 body-small font-black">Cerritos, Pereira</p>
 						<p className="h3 font-semibold mt-3">Horario</p>
-						<p className="leading-5">3pm a 9pm</p>
+						<p className="leading-5">3:30pm a 9pm</p>
 					</div>
 					<div className="flex flex-col">
 						<p className="h3 font-semibold">Descripción</p>
@@ -51,7 +53,7 @@ const Ceremony = (props: ICeremony) => {
 						<p className="leading-5">Poolside chic</p>
 					</div>
 				</div>
-				<p className="h2 w-full font-black text-highlight leading-5">SABADO</p>
+				<p className="h2 w-full font-black font-body text-highlight leading-6">SABADO</p>
 				<div className=" grid grid-cols-2 gap-y-4 px-0">
 					<div className="flex flex-col">
 						<p className="h3  font-semibold">Lugar</p>

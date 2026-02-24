@@ -2,7 +2,7 @@ interface IContactos {}
 
 const Contactos = (props: IContactos) => {
 	return (
-		<div className="flex flex-col gap-y-4 px-6 py-10">
+		<div className="flex flex-col gap-y-4 px-6 py-6 md:py-10">
 			<div>
 				<p className="h1">Contactos</p>
 				<p className="h3 highlight">Servicios útiles durante tu estadía</p>

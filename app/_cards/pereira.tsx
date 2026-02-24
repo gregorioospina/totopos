@@ -2,7 +2,7 @@ interface IPereira {}
 
 const Pereira = (props: IPereira) => {
 	return (
-		<div className="flex flex-col  gap-y-4 px-6 py-10">
+		<div className="flex flex-col  gap-y-4 px-6 py-6 md:py-10">
 			<div>
 				<p className="h1">Lugar</p>
 				<p className="h3 highlight">Bienvenidos a Pereira, corazón del Eje Cafetero</p>

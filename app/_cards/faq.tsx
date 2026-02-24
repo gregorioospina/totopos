@@ -82,7 +82,7 @@ const FAQ = () => {
 
 	return (
 		<>
-			<div className="flex flex-col gap-y-4 px-6 py-10">
+			<div className="flex flex-col gap-y-4 px-6 py-6 md:py-10">
 				<div className="flex justify-between">
 					<p className="h1">Preguntas</p>
 					<button className="bg-highlight text-white rounded-md px-3 py-1 hover:bg-highlight-dark transition-colors" onClick={() => setIsModalOpen(true)}>

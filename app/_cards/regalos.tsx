@@ -4,7 +4,7 @@ interface IRegalos {}
 
 const Regalos = (props: IRegalos) => {
 	return (
-		<div className="flex flex-col gap-y-4 px-6 py-10">
+		<div className="flex flex-col gap-y-4 px-6 py-6 md:py-10">
 			<div>
 				<p className="h1">Regalos</p>
 				<p className="h3 highlight">Prontamente les contaremos cómo pueden darnos un regalito</p>
