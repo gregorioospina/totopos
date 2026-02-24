@@ -17,3 +17,10 @@ export type Question = {
 	question: string;
 	index: number;
 };
+
+export type GiftMessage = {
+	author: string;
+	message: string;
+	index: number;
+	likes: number;
+};
