@@ -102,7 +102,7 @@ const FAQ = () => {
 						faqs.map((faq) => (
 							<div
 								key={faq.index}
-								className="flex flex-col gap-y-2 p-4 bg-background-2 border first-of-type:border-t-0 border-b-0 border-foreground-light/30 hover:border-highlight hover:shadow-md transition-all">
+								className="flex flex-col gap-y-2 p-4 bg-background-2 border border-foreground-light/30 hover:border-highlight hover:shadow-md transition-all">
 								<div className="flex gap-x-2 justify-between items-start">
 									<p className="h3 font-semibold flex-1">{faq.question}</p>
 									<p className="body-small text-foreground-light whitespace-nowrap">{faq.askedby}</p>

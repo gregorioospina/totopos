@@ -10,8 +10,8 @@ interface IGrid {
 const Grid = ({ cards, heroe, hide }: IGrid) => {
 	return (
 		<div className={["flex transition-opacity flex-col duration-700 items-center"].join(" ")}>
-			{/* Mobile: Single column with snap scroll and 60px overflow preview */}
-			<div className="md:hidden w-full h-screen overflow-y-scroll snap-y snap-mandatory pb-15">
+			{/* Mobile: Single column with snap scroll */}
+			<div className="md:hidden w-full pb-15">
 				<div className="flex flex-col gap-4 ">
 					{heroe ? <div className="flex w-full snap-start">{heroe}</div> : null}
 					{cards.map((card, index) => (
@@ -24,10 +24,10 @@ const Grid = ({ cards, heroe, hide }: IGrid) => {
 				</div>
 			</div>
 			{/* Desktop: Two columns with offset and snap scroll */}
-			<div className="hidden md:flex md:flex-col md:w-full h-svh overflow-y-scroll snap-y snap-mandatory">
+			<div className="hidden md:flex md:flex-col md:w-full">
 				{heroe ? <div className="flex w-full snap-start">{heroe}</div> : null}
 				<div className="flex flex-1 gap-x-5 justify-center">
-					<div className="w-1/2 max-w-120 flex last-of-type::pb-10 flex-col gap-10 px-4">
+					<div className="w-1/2 pb-50 max-w-120 flex last-of-type::pb-10 flex-col gap-10 px-4">
 						{cards
 							.filter((_, index) => index % 2 === 0)
 							.map((card, index) => (
