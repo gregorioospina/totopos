@@ -23,7 +23,6 @@ const Panorama = (props: IPanorama) => {
 					<p className="body-small">
 						Cálido-templado y húmedo todo el año; <span className="font-semibold">24–27 °C de día / 17–19 °C de noche</span> aprox., con lluvias frecuentes.
 					</p>
-					<p className="body-small">Llevar impermeable ligero y zapatos con suela antideslizante.</p>
 				</div>
 			</div>
 		</div>
