@@ -19,7 +19,7 @@ export async function GET() {
 		const sheets = google.sheets({ version: "v4", auth });
 
 		const spreadsheetId = SPREADSHEET_ID;
-		const range = "RSVP!A2:K1000"; // Get all attendee data
+		const range = "FAQ!A2:K1000"; // Get all attendee data
 
 		const response = await sheets.spreadsheets.values.get({
 			spreadsheetId,
@@ -27,7 +27,7 @@ export async function GET() {
 		});
 
 		if (response.data.values) {
-			return NextResponse.json({ attendees: response.data.values });
+			return NextResponse.json({ faqs: response.data.values });
 		} else {
 			return NextResponse.json({ error: "No data found" }, { status: 400 });
 		}

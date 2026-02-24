@@ -11,3 +11,9 @@ export type Invitation = {
 	CC2: string | null;
 	index: number;
 };
+
+export type Question = {
+	askedBy: string;
+	question: string;
+	index: number;
+};

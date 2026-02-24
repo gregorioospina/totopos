@@ -12,7 +12,7 @@ import { useEffect } from "react";
 interface IPereiraHome {}
 
 const PereiraHome = (props: IPereiraHome) => {
-	const { hide, setHide } = useHideStore();
+	const { setHide } = useHideStore();
 
 	useEffect(() => {
 		setHide(false);
@@ -21,7 +21,7 @@ const PereiraHome = (props: IPereiraHome) => {
 	return (
 		<div className="z-10 relative">
 			<Grid
-				hide={hide}
+				hide={false}
 				cards={[
 					<TCard image="/assets/pereira.webp" imageClassName="object-center object-cover">
 						<Pereira />
