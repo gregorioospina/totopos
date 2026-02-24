@@ -29,6 +29,9 @@ const Navbar = (props: INavbar) => {
 				<Link href={"/regalos"} className="text-foreground bg-transparent no-underline text-sm whitespace-nowrap">
 					Regalos
 				</Link>
+				<Link href={"/faq"} className="text-foreground bg-transparent no-underline text-sm whitespace-nowrap">
+					FAQ
+				</Link>
 			</div>
 		</div>
 	);

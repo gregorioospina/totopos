@@ -24,7 +24,7 @@ const Grid = ({ cards, heroe, hide }: IGrid) => {
 				</div>
 			</div>
 			{/* Desktop: Two columns with offset and snap scroll */}
-			<div className="hidden md:flex md:flex-col md:w-full h-screen overflow-y-scroll snap-y snap-mandatory">
+			<div className="hidden md:flex md:flex-col md:w-full h-svh overflow-y-scroll snap-y snap-mandatory">
 				{heroe ? <div className="flex w-full snap-start">{heroe}</div> : null}
 				<div className="flex flex-1 gap-x-5 justify-center">
 					<div className="w-1/2 max-w-120 flex last-of-type::pb-10 flex-col gap-10 px-4">

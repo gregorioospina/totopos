@@ -89,25 +89,25 @@ const FAQ = () => {
 						¡Haz tu pregunta!
 					</button>
 				</div>
-				<div className="flex flex-col gap-y-6">
+				<div className="grid grid-cols-1 gap-0">
 					{loading ? (
-						<div className="flex justify-center items-center py-8">
+						<div className="flex justify-center items-center py-8 col-span-full">
 							<p className="body text-foreground-light">Cargando preguntas...</p>
 						</div>
 					) : faqs.length === 0 ? (
-						<div className="flex justify-center items-center py-8">
+						<div className="flex justify-center items-center py-8 col-span-full">
 							<p className="body text-foreground-light">No hay preguntas disponibles.</p>
 						</div>
 					) : (
 						faqs.map((faq) => (
 							<div
 								key={faq.index}
-								className="flex flex-col gap-y-1 p-4 bg-background-2 rounded-lg border-l-4 border-highlight shadow-sm hover:shadow-md transition-shadow">
-								<div className="flex gap-x-2 justify-between">
-									<p className="h3 highlight font-semibold">{faq.question}</p>
-									<p className="body-small">{faq.askedby}</p>
+								className="flex flex-col gap-y-2 p-4 bg-background-2 border first-of-type:border-t-0 border-b-0 border-foreground-light/30 hover:border-highlight hover:shadow-md transition-all">
+								<div className="flex gap-x-2 justify-between items-start">
+									<p className="h3 font-semibold flex-1">{faq.question}</p>
+									<p className="body-small text-foreground-light whitespace-nowrap">{faq.askedby}</p>
 								</div>
-								{faq.answer && <p className="body text-foreground-light">{faq.answer}</p>}
+								{faq.answer && <p className="body text-foreground-light pt-2 border-t border-foreground-light/20">{faq.answer}</p>}
 							</div>
 						))
 					)}
@@ -118,7 +118,7 @@ const FAQ = () => {
 					<div className="flex flex-col gap-y-1">
 						<label className="body-small text-foreground">Escribe tu pregunta</label>
 						<textarea
-							className="border border-foreground-light rounded-md p-2 body focus:outline-none focus:border-highlight min-h-[100px]"
+							className="border border-foreground-light rounded-md p-2 body focus:outline-none focus:border-foreground min-h-[100px]"
 							value={question}
 							onChange={(e) => setQuestion(e.target.value)}
 							placeholder="Escribe tu pregunta aquí..."
@@ -128,7 +128,7 @@ const FAQ = () => {
 						<label className="body-small text-foreground">Tu nombre</label>
 						<input
 							type="text"
-							className="border border-foreground-light rounded-md p-2 body focus:outline-none focus:border-highlight"
+							className="border border-foreground-light rounded-md p-2 body focus:outline-none focus:border-foreground"
 							value={askedBy}
 							onChange={(e) => setAskedBy(e.target.value)}
 							placeholder="Tu nombre..."
@@ -136,7 +136,7 @@ const FAQ = () => {
 					</div>
 					<p className="body-small">Cuando Maca o Diego respondan tu pregunta, aparecerá en esta página. Vuelve en un rato para ver la respuesta!</p>
 					<button
-						className="bg-highlight text-white rounded-md px-4 py-2 hover:bg-highlight-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+						className="bg-foreground text-white rounded-md px-4 py-2 hover:bg-foreground-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 						onClick={handleSubmitQuestion}
 						disabled={submitting || !askedBy}>
 						{submitting ? "Enviando..." : "Enviar pregunta"}

@@ -12,7 +12,7 @@ const TCard = ({ image = "/assets/FOTOLAGO.png", children, noImage, imageClassNa
 	return (
 		<div
 			id={id}
-			className="md:max-w-110 w-[90svw] relative bg-background-2 h-[87svh] md:h-[80svh] md:aspect-8/16 shadow-[0pt_4pt_10px_-7px_#0000007a] rounded-md max-h-[90%]">
+			className="md:max-w-110 w-[90svw] relative bg-background-2 h-[90svh] md:h-[80svh] md:aspect-8/16 shadow-[0pt_4pt_10px_-7px_#0000007a] rounded-md max-h-[90%]">
 			{!noImage && <div className="z-20 relative rounded-[inherit] bg-[linear-gradient(180deg,_#f4f2e2e6_95%,_transparent)]">{children}</div>}
 			{noImage && children}
 			{!noImage && (

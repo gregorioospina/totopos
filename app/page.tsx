@@ -15,6 +15,7 @@ const Home = (props: IHome) => {
 	const { hide, setHide } = useHideStore();
 
 	useEffect(() => {
+		setHide(true);
 		const timeout = setTimeout(() => {
 			setHide(false);
 		}, 2600);
