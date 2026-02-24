@@ -15,6 +15,10 @@ const Home = (props: IHome) => {
 	const { hide, setHide } = useHideStore();
 
 	useEffect(() => {
+		window.scrollTo({ top: 0, behavior: "instant" });
+	}, []);
+
+	useEffect(() => {
 		setHide(true);
 		const timeout = setTimeout(() => {
 			setHide(false);
