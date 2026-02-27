@@ -50,7 +50,7 @@ const Ceremony = (props: ICeremony) => {
 						<p className="h3 font-semibold">Descripción</p>
 						<p className="leading-5">Open house para vernos antes del gran día</p>
 						<p className="h3 font-semibold mt-3">Dress Code</p>
-						<p className="leading-5">Poolside chic</p>
+						<p className="leading-5">Casual bonitos</p>
 					</div>
 				</div>
 				<p className="h2 w-full font-black font-body text-highlight leading-6">SABADO</p>
@@ -62,7 +62,7 @@ const Ceremony = (props: ICeremony) => {
 					</div>
 					<div className="flex flex-col">
 						<p className="h3  font-semibold mt-1">Horario</p>
-						<p className="leading-5">4:00 p.m. - Ceremonia</p>
+						<p className="leading-5">4:00 p.m.</p>
 					</div>
 				</div>
 			</div>
