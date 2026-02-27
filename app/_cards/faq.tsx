@@ -1,6 +1,7 @@
 "use client";
 
 import { Dialog } from "@/_components/dialog";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type IFAQ = {
@@ -99,17 +100,24 @@ const FAQ = () => {
 							<p className="body text-foreground-light">No hay preguntas disponibles.</p>
 						</div>
 					) : (
-						faqs.map((faq) => (
-							<div
-								key={faq.index}
-								className="flex flex-col gap-y-2 p-4 bg-background-2 border border-foreground-light/30 hover:border-highlight hover:shadow-md transition-all">
-								<div className="flex gap-x-2 justify-between items-start">
-									<p className="h3 font-semibold flex-1">{faq.question}</p>
-									<p className="body-small text-foreground-light whitespace-nowrap">{faq.askedby}</p>
-								</div>
-								{faq.answer && <p className="body text-foreground-light pt-2 border-t border-foreground-light/20">{faq.answer}</p>}
+						<>
+							<div key={"pregunta fija"} className="flex flex-col gap-y-2 p-4 bg-background-2 border border-foreground-light/30 border-b-0 transition-all">
+								<p className="h3 font-semibold flex-1">¿Dónde queda la Hacienda San Jorge?</p>
+								<p className="body-small leading-3 font-semibold text-foreground-light whitespace-nowrap">Preguntada por: Gregorio</p>
+								<Link className="text-foreground" href={"https://maps.app.goo.gl/ptsSk4iF99ge2gFz5"} target="_blank">
+									Mírala en Google Maps
+								</Link>
 							</div>
-						))
+							{faqs.map((faq) => (
+								<div
+									key={faq.index}
+									className="flex flex-col gap-y-2 p-4 bg-background-2 border border-foreground-light/30  border-b-0 last-of-type:border-b transition-all">
+									<p className="h3 font-semibold flex-1">{faq.question}</p>
+									<p className="body-small leading-3 font-semibold text-foreground-light whitespace-nowrap">Preguntada por: {faq.askedby}</p>
+									{faq.answer && <p className="body text-foreground-light pt-2 border-t border-foreground-light/20">{faq.answer}</p>}
+								</div>
+							))}
+						</>
 					)}
 				</div>
 			</div>

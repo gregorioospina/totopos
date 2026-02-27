@@ -28,6 +28,9 @@ export default function RSVP() {
 
 	const [inputCC1, setInputCC1] = useState<string>("");
 	const [inputCC2, setInputCC2] = useState<string>("");
+	const [inputRestrictions1, setInputRestrictions1] = useState<string>("");
+	const [inputRestrictions2, setInputRestrictions2] = useState<string>("");
+	const [inputSong, setInputSong] = useState<string>("");
 
 	const [step, setStep] = useState<"SEARCH" | "SELECT" | "RSVP">("SEARCH");
 
@@ -72,6 +75,7 @@ export default function RSVP() {
 						CC2: a[9] === "N/A" ? null : a[9],
 						Restrictions1: a[10] === "N/A" ? null : a[10],
 						Restrictions2: a[11] === "N/A" ? null : a[11],
+						Song: a[12] === "N/A" ? null : a[12],
 						index,
 					});
 				});
@@ -104,8 +108,14 @@ export default function RSVP() {
 			setSelectedInvitation(attendees[index]);
 			const cc1 = attendees[index].CC1;
 			const cc2 = attendees[index].CC2;
+			const restrictions1 = attendees[index].Restrictions1;
+			const restrictions2 = attendees[index].Restrictions2;
+			const song = attendees[index].Song;
 			setInputCC1(cc1 ?? "");
 			setInputCC2(cc2 ?? "");
+			setInputRestrictions1(restrictions1 ?? "");
+			setInputRestrictions2(restrictions2 ?? "");
+			setInputSong(song ?? "");
 		},
 		[attendees],
 	);
@@ -115,7 +125,14 @@ export default function RSVP() {
 
 		fetch("/api/add-rsvp", {
 			method: "POST",
-			body: JSON.stringify({ ...selectedInvitation, CC1: inputCC1, CC2: inputCC2 }),
+			body: JSON.stringify({
+				...selectedInvitation,
+				CC1: inputCC1,
+				CC2: inputCC2,
+				Restrictions1: inputRestrictions1 || null,
+				Restrictions2: inputRestrictions2 || null,
+				Song: inputSong || null,
+			}),
 		})
 			.then((s) => s.json())
 			.then((c) => {
@@ -123,7 +140,7 @@ export default function RSVP() {
 					setSuccessfulRSVP(true);
 				}
 			});
-	}, [selectedInvitation, inputCC1, inputCC2]);
+	}, [selectedInvitation, inputCC1, inputCC2, inputRestrictions1, inputRestrictions2, inputSong]);
 
 	const handleSearch = useCallback(() => {
 		const results = matchSorter(Array.from(invitationMap.keys()), nameToSearch);
@@ -303,7 +320,8 @@ export default function RSVP() {
 											className="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-foreground/30 checked:border-foreground/40 transition-all"
 											onChange={() => {
 												const index = invitationMap.get(name);
-												if (index) {
+												console.log("Selected name:", name, "Index in invitationMap:", index);
+												if (index !== undefined) {
 													handleUserSelect(index);
 												}
 											}}
@@ -326,14 +344,16 @@ export default function RSVP() {
 				);
 			case "RSVP":
 				return (
-					<div className="flex flex-col gap-y-4 justify-center">
+					<div className="flex flex-col gap-y-2 justify-center">
 						<div className="flex flex-col gap-y-0">
 							<p className="font-highlights text-3xl md:text-4xl font-serif max-w-3/4 mb-1">¿Podrás acompañarnos?</p>
 						</div>
 						<div className="flex flex-col gap-y-2">{renderInputsOfSelectedInvitation} </div>
 						{selectedInvitation?.Confirm1 && (
 							<div className="flex flex-col gap-y-2 mt-4">
-								<p className="uppercase font-extralight text-sm tracking-wide">Cédula de {selectedInvitation?.Name1}</p>
+								<p className="uppercase font-extralight text-sm tracking-wide">
+									Cédula de <span className="font-bold">{selectedInvitation?.Name1}</span>
+								</p>
 								<input
 									className="border border-foreground/30 rounded-md p-2"
 									onChange={(e) => setInputCC1(e.target.value ?? "")}
@@ -344,7 +364,9 @@ export default function RSVP() {
 						)}
 						{selectedInvitation?.Confirm2 && (
 							<div className="flex flex-col gap-y-2">
-								<p className="uppercase font-extralight text-sm tracking-wide">Cédula de {selectedInvitation?.Name2}</p>
+								<p className="uppercase font-extralight text-sm tracking-wide">
+									Cédula de <span className="font-bold">{selectedInvitation?.Name2}</span>
+								</p>
 								<input
 									className="border border-foreground/30 rounded-md p-2"
 									onChange={(e) => setInputCC2(e.target.value ?? "")}
@@ -352,7 +374,44 @@ export default function RSVP() {
 									value={inputCC2}
 								/>
 							</div>
+						)}{" "}
+						{selectedInvitation?.Confirm1 && (
+							<div className="flex flex-col gap-y-2 mt-4">
+								<p className="uppercase font-extralight text-sm tracking-wide">
+									Restricciones alimentarias de <span className="font-bold">{selectedInvitation?.Name1}</span> (opcional)
+								</p>
+								<input
+									className="border border-foreground/30 rounded-md p-2"
+									onChange={(e) => setInputRestrictions1(e.target.value ?? "")}
+									placeholder="Ej: Vegetariano, alergia a mariscos, etc."
+									value={inputRestrictions1}
+								/>
+							</div>
 						)}
+						{selectedInvitation?.Confirm2 && (
+							<div className="flex flex-col gap-y-2">
+								<p className="uppercase font-extralight text-sm tracking-wide">
+									Restricciones alimentarias de <span className="font-bold">{selectedInvitation?.Name2}</span> (opcional)
+								</p>
+								<input
+									className="border border-foreground/30 rounded-md p-2"
+									onChange={(e) => setInputRestrictions2(e.target.value ?? "")}
+									placeholder="Ej: Vegetariano, alergia a mariscos, etc."
+									value={inputRestrictions2}
+								/>
+							</div>
+						)}
+						{(selectedInvitation?.Confirm1 || selectedInvitation?.Confirm2) && (
+							<div className="flex flex-col gap-y-2 mt-4">
+								<p className="uppercase font-extralight text-sm tracking-wide">Canción que no puede faltar en la fiesta</p>
+								<input
+									className="border border-foreground/30 rounded-md p-2"
+									onChange={(e) => setInputSong(e.target.value ?? "")}
+									placeholder="Nombre de la canción y artista"
+									value={inputSong}
+								/>
+							</div>
+						)}{" "}
 						<button
 							disabled={disableSendButton}
 							onClick={handleSend}
@@ -372,6 +431,9 @@ export default function RSVP() {
 		renderInputsOfSelectedInvitation,
 		inputCC1,
 		inputCC2,
+		inputRestrictions1,
+		inputRestrictions2,
+		inputSong,
 		handleSend,
 		invitationMap,
 		handleUserSelect,

@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 		const spreadsheetId = SPREADSHEET_ID;
 		const inputRow = body.index + 2;
 
-		const rangeToInput = `RSVP!B${inputRow}:M${inputRow}`;
+		const rangeToInput = `RSVP!B${inputRow}:N${inputRow}`;
 		const resource = {
 			values: [
 				[
@@ -32,6 +32,7 @@ export async function POST(req: NextRequest) {
 					body.CC2,
 					body.Restrictions1,
 					body.Restrictions2,
+					body.Song,
 				],
 			],
 		};
