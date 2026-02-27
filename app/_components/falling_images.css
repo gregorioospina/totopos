@@ -1,5 +1,6 @@
 .falling-images-container {
 	position: relative;
 	width: 100svw;
+	max-width: 75svw;
 	height: 80svh;
 }

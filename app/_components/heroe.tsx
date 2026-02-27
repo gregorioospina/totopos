@@ -8,7 +8,7 @@ interface IHeroe {}
 const Heroe = (props: IHeroe) => {
 	const { hide } = useHideStore();
 	return (
-		<div className="relative ">
+		<div className="relative px-[12.5svw] ">
 			<div className="flex flex-col absolute top-1/2 px-[7%] translate-y-[-50%] z-40">
 				<p className="text-white text-8xl md:text-[5rem] leading-16  font-title font-black">Diego</p>
 				<motion.img
@@ -17,12 +17,12 @@ const Heroe = (props: IHeroe) => {
 					width={150}
 					height={150}
 					className="object-contain"
-					initial={{ opacity: 0, x: "calc(50vw - 50% - 7vw)" }}
+					initial={{ opacity: 0, x: "calc(50vw - 50% - 20.5svw)" }}
 					animate={
 						hide
 							? {
 									opacity: [0.6, 1, 0.6],
-									x: "calc(50vw - 50% - 7vw)",
+									x: "calc(50vw - 50% - 20.5svw)",
 								}
 							: { opacity: 1, x: 0 }
 					}
