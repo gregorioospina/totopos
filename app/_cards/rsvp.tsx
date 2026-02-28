@@ -283,8 +283,7 @@ export default function RSVP() {
 								<img src={"/assets/DTORTUGAM.png"} alt="searching" className="max-w-2/4 mb-2" />
 							</div>
 							<p className="font-body text-sm md:text-base font-light mb-4">
-								Por favor, ingresa tu nombre y apellido a continuación. Si estás confirmando tu asistencia por ti y un acompañante, podrás responder por ambos
-								en el siguiente paso.
+								Por favor, ingresa tu nombre y apellido a continuación. Si tienes un acompañante asignado, podrás responder por ambos en el siguiente paso.
 							</p>
 						</div>
 						<input

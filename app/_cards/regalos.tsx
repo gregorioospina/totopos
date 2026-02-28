@@ -99,7 +99,7 @@ const Regalos = (props: IRegalos) => {
 			const response = await fetch("/api/like-message", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ index: msg.index, likes: msg.likes }),
+				body: JSON.stringify({ index: msg.index - 1, likes: msg.likes }),
 			});
 
 			if (response.ok) {
@@ -161,7 +161,7 @@ const Regalos = (props: IRegalos) => {
 					</div>
 					<div className="col-span-2 md:hidden flex flex-col justify-between">
 						<div className="flex justify-center h-40 w-full relative">
-							<Image src="/assets/them/sombrero.jpg" fill className="rounded-md object-cover" alt="regalos" />
+							<Image src="https://fugvavcdkqda2ylw.public.blob.vercel-storage.com/sombrero.jpg" fill className="rounded-md object-cover" alt="regalos" />
 						</div>
 					</div>
 
@@ -182,7 +182,13 @@ const Regalos = (props: IRegalos) => {
 								</button>
 							</div>
 							<div className="flex justify-center">
-								<Image src="/assets/them/sombrero.jpg" width={300} height={225} className="rounded-md object-cover" alt="regalos" />
+								<Image
+									src="https://fugvavcdkqda2ylw.public.blob.vercel-storage.com/sombrero.jpg"
+									width={300}
+									height={225}
+									className="rounded-md object-cover"
+									alt="regalos"
+								/>
 							</div>
 						</div>
 					</div>

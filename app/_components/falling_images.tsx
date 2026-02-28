@@ -100,13 +100,6 @@ const FallingImages = () => {
 			size: { width: 600, height: 600 },
 			delay: 2.2,
 		},
-		// {
-		// 	src: "https://fugvavcdkqda2ylw.public.blob.vercel-storage.com/WhatsApp%20Image%202026-02-23%20at%2017.51.56.png",
-		// 	alt: "Ring",
-		// 	finalPosition: { top: "10%", left: "95%" },
-		// 	size: { width: 500, height: 500 },
-		// 	delay: 2.4,
-		// },
 		{
 			src: "https://fugvavcdkqda2ylw.public.blob.vercel-storage.com/WhatsApp%20Image%202026-02-23%20at%2018.23.36.png",
 			alt: "Sombrero",

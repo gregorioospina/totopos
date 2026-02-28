@@ -4,7 +4,7 @@ const Ceremony = (props: ICeremony) => {
 	return (
 		<div className="flex flex-col gap-y-4 ">
 			<div className="flex flex-col px-6 pt-6 md:pt-10">
-				<p className="h1">Ceremonia</p>
+				<p className="h1">Eventos</p>
 			</div>
 			<div className="flex flex-col">
 				<p className="text-center h2 font-body font-bold">Junio 2026</p>

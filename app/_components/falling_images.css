@@ -1,6 +1,11 @@
 .falling-images-container {
 	position: relative;
 	width: 100svw;
-	max-width: 75svw;
 	height: 80svh;
+}
+
+@media (min-width: 768px) {
+	.falling-images-container {
+		max-width: 75svw;
+	}
 }

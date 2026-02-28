@@ -14,12 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Diego & Maca - Boda 6 de Junio 2026 | Pereira, Colombia",
+	title: "Diego & Maca - Matrimonio 6 de Junio 2026 | Pereira, Colombia",
 	description:
-		"Te invitamos a celebrar nuestra boda el 6 de junio de 2026 en la Hacienda San Jorge, Cerritos, Pereira. Ceremonia, coctel y cena. ¡Confirma tu asistencia!",
+		"Te invitamos a celebrar nuestro matrimonio el 6 de junio de 2026 en la Hacienda San Jorge, Cerritos, Pereira. Ceremonia, coctel y cena. ¡Confirma tu asistencia!",
 	keywords: [
 		"Diego y Maca",
-		"boda",
+		"matrimonio",
 		"matrimonio",
 		"wedding",
 		"junio 2026",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 		"Pereira",
 		"Cerritos",
 		"Colombia",
-		"invitación de boda",
+		"invitación de matrimonio",
 		"RSVP",
 	],
 	authors: [{ name: "Diego & Maca" }],
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
 		canonical: "/",
 	},
 	openGraph: {
-		title: "Diego & Maca - Boda 6 de Junio 2026",
-		description: "Celebra con nosotros nuestra boda el 6 de junio de 2026 en la Hacienda San Jorge, Pereira. ¡Te esperamos!",
+		title: "Diego & Maca - Matrimonio 6 de Junio 2026",
+		description: "Celebra con nosotros nuestro matrimonio el 6 de junio de 2026 en la Hacienda San Jorge, Pereira. ¡Te esperamos!",
 		url: "https://diegoymaca.com",
 		siteName: "Diego & Maca Wedding",
 		images: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 				url: "/assets/invitacion.png",
 				width: 1200,
 				height: 630,
-				alt: "Diego & Maca - Invitación de Boda",
+				alt: "Diego & Maca - Invitación de Matrimonio",
 			},
 			{
 				url: "/apple-touch-icon.png",
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Diego & Maca - Boda 6 de Junio 2026",
-		description: "Te invitamos a celebrar nuestra boda en Pereira, Colombia. ¡Confirma tu asistencia!",
+		title: "Diego & Maca - Matrimonio 6 de Junio 2026",
+		description: "Te invitamos a celebrar nuestro matrimonio en Pereira, Colombia. ¡Confirma tu asistencia!",
 		images: ["/assets/invitacion.png"],
 		creator: "@diegoymaca",
 	},
