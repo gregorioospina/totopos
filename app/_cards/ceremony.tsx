@@ -15,23 +15,19 @@ const Ceremony = (props: ICeremony) => {
 					</div>
 
 					{/* Grid structure */}
-					<div className="grid grid-cols-3 bg-foreground">
+					<div className="grid grid-cols-2 ">
 						{/* Header row - superior rectangle */}
-						<div className="border border-white p-2 text-center text-white">viernes</div>
-						<div className="border border-white p-2 text-center text-white">sábado</div>
-						<div className="border border-white p-2 text-center text-white">domingo</div>
+						<div className="border border-foreground font-black bg-foreground/70 p-2 text-center text-background">viernes</div>
+						<div className="border border-foreground font-black bg-foreground/70 p-2 text-center text-background">sábado</div>
 
 						{/* Number row - 3 squares */}
-						<div className="border flex flex-col bg-foreground-light border-white p-1 text-center text-white text-2xl aspect-4/3  items-start justify-start">
-							<p>5</p>
-							<p className="text-left text-sm">Open house Sazagua</p>
+						<div className="border flex flex-col  border-foreground p-1 text-center text-foreground text-2xl aspect-6/3  items-start justify-start">
+							<p className="text-xl font-bold">5</p>
+							<p className="text-left text-base">Open house Sazagua</p>
 						</div>
-						<div className="border flex flex-col border-white p-1 text-center text-white text-2xl aspect-4/3  items-start justify-start">
-							<p>6</p>
-							<p className="text-left text-sm">Matrimonio</p>
-						</div>
-						<div className="border bg-foreground-light border-white p-1 text-center text-white text-2xl aspect-4/3 flex items-start justify-start">
-							<p>7</p>
+						<div className="border flex flex-col border-foreground p-1 text-center text-foreground text-2xl aspect-6/3  items-start justify-start">
+							<p className="text-xl font-bold">6</p>
+							<p className="text-left text-base">Matrimonio</p>
 						</div>
 					</div>
 				</div>
@@ -59,6 +55,15 @@ const Ceremony = (props: ICeremony) => {
 						<p className="h3  font-semibold">Lugar</p>
 						<p className="leading-5">Hacienda San Jorge</p>
 						<p className="leading-5 body-small font-black">Cerritos, Pereira</p>
+						<p className="h3 font-semibold mt-3">Dress Code</p>
+						<button
+							onClick={() => {
+								const element = document.getElementById("dress-code-card");
+								element?.scrollIntoView({ behavior: "smooth", block: "center" });
+							}}
+							className="text-sm font-body leading-5 mt-1 underline text-left hover:text-highlight transition-colors">
+							Vestido Formal
+						</button>
 					</div>
 					<div className="flex flex-col">
 						<p className="h3  font-semibold mt-1">Horario</p>

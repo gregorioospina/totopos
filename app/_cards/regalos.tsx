@@ -203,7 +203,16 @@ const Regalos = (props: IRegalos) => {
 							<p className="body text-foreground-light">No hay mensajes aún. ¡Sé el primero!</p>
 						</div>
 					) : (
-						messages.slice(1).map((msg) => renderMessageCard(msg))
+						<>
+							{messages.map((msg, index) => {
+								// On desktop, skip first message (it's rendered separately above)
+								// On mobile, show all messages
+								if (index === 0) {
+									return renderMessageCard(msg, "md:hidden");
+								}
+								return renderMessageCard(msg);
+							})}
+						</>
 					)}
 				</div>
 			</div>

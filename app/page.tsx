@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Ceremony from "./_cards/ceremony";
 import DressCode from "./_cards/dress_code";
 import SleepingArrangements from "./_cards/sleeping_arrangements";
+import BottomMenu from "./_components/bottom-menu";
 import TCard from "./_components/card";
 import Grid from "./_components/grid";
 import Heroe from "./_components/heroe";
@@ -44,6 +45,7 @@ const Home = (props: IHome) => {
 					<TCard>
 						<SleepingArrangements />
 					</TCard>,
+					<BottomMenu />,
 				]}></Grid>
 		</div>
 	);

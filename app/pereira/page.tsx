@@ -4,6 +4,7 @@ import Contactos from "@/_cards/contactos";
 import Pereira from "@/_cards/pereira";
 import SleepingArrangements from "@/_cards/sleeping_arrangements";
 import Turismo from "@/_cards/turismo";
+import BottomMenu from "@/_components/bottom-menu";
 import TCard from "@/_components/card";
 import Grid from "@/_components/grid";
 import { useHideStore } from "@/_store/useHideStore";
@@ -35,6 +36,7 @@ const PereiraHome = (props: IPereiraHome) => {
 					<TCard>
 						<Contactos />
 					</TCard>,
+					<BottomMenu />,
 				]}></Grid>
 		</div>
 	);
