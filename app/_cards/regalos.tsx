@@ -145,16 +145,19 @@ const Regalos = (props: IRegalos) => {
 
 	return (
 		<>
-			<div className="px-6 py-6 pt-20 md:py-10 md:pt-20">
+			<div className="px-6 py-4 pt-20 md:py-10 md:pt-20">
 				<div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 auto-rows-fr">
 					{/* Mobile: Combined header cell spanning both columns */}
 					<div className="col-span-2 md:hidden rounded-md gap-y-2 flex flex-col">
 						<div>
 							<p className="h1">Regalos</p>
 							<p className="h3 highlight">Prontamente les contaremos cómo pueden darnos un regalito</p>
+							<p className="h5 leading-4 mt-2 highlight">Además, nos encantaría que nos regalen una anécdota, historia o consejo de su primer hogar!</p>
 						</div>
 						<div className="flex items-center h-20 justify-center">
-							<button className="bg-highlight text-white rounded-md px-4 py-2 hover:bg-highlight-dark transition-colors" onClick={() => setIsModalOpen(true)}>
+							<button
+								className="mt-1 bg-highlight text-white rounded-md px-4 py-2 hover:bg-highlight-dark transition-colors"
+								onClick={() => setIsModalOpen(true)}>
 								¡Déjanos un mensaje!
 							</button>
 						</div>
@@ -169,14 +172,16 @@ const Regalos = (props: IRegalos) => {
 					{!loading && messages.length > 0 && renderMessageCard(messages[0], "hidden md:block")}
 
 					{/* Desktop: Combined header cell spanning columns 2-4 */}
-					<div className="hidden md:block md:col-span-3 rounded-md p-6 ">
+					<div className="hidden md:block md:col-span-3 rounded-md p-3 mt-1 ">
 						<div className="flex justify-between gap-x-2">
 							<div className="flex flex-col">
 								<p className="h1">Regalos</p>
 								<p className="h3 highlight">Prontamente les contaremos cómo pueden darnos un regalito</p>
+								<p className="h5 leading-5 mt-2 highlight">Además, nos encantaría que nos regalen una anécdota, historia o consejo de su primer hogar!</p>
+
 								<div className="flex-1"></div>
 								<button
-									className="bg-highlight w-50 text-white rounded-md px-4 py-2 hover:bg-highlight-dark transition-colors"
+									className="bg-highlight mt-2 w-50 text-white rounded-md px-4 py-2 hover:bg-highlight-dark transition-colors"
 									onClick={() => setIsModalOpen(true)}>
 									¡Déjanos un mensaje!
 								</button>

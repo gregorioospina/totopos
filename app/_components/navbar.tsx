@@ -10,7 +10,7 @@ const Navbar = (props: INavbar) => {
 	return (
 		<div
 			className={[
-				"fixed z-50 md:top-5 top-3 left-0 right-0 md:left-[10%] md:right-[10%] overflow-x-auto md:overflow-visible transition-opacity duration-700",
+				"fixed z-50 md:top-5 top-0 pt-3 pl-0 pb-5 left-0 right-0 md:left-[10%] md:right-[10%] overflow-x-auto md:overflow-visible transition-opacity duration-700",
 				hide ? "opacity-0" : "opacity-100",
 			].join(" ")}>
 			<div className="shadow-lg mx-5 p-1 h-10 rounded-lg bg-background-2 min-w-max md:min-w-0">
