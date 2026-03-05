@@ -7,7 +7,7 @@ const MenuLink = ({ href, icon, label }: { href: string; icon: string; label: st
 	<Link
 		href={href}
 		className="text-foreground border border-foreground/30 rounded-md px-4 py-3 flex flex-col items-center gap-1.5 hover:bg-foreground/10 transition-colors text-sm">
-		<Image src={icon} width={48} height={48} alt={label} className="opacity-70" />
+		<Image src={icon} width={88} height={88} alt={label} className="opacity-70" />
 		{label}
 	</Link>
 );
@@ -25,7 +25,7 @@ const BottomMenu = () => {
 	return (
 		<div className="bg-background border-t border-foreground/30 p-4 z-40">
 			<div className="max-w-5xl mx-auto">
-				<p className="text-sm font-semibold mb-3 text-center md:text-left">Ve a</p>
+				<p className="text-sm font-semibold mb-3 text-center md:text-left">Ve a otra sección</p>
 				<div className="grid grid-cols-2 md:grid-cols-4 gap-2">
 					<MenuLink href="/regalos" icon="/assets/a-icons/gifts.png" label="Regalos" />
 					<MenuLink href="/rsvp" icon="/assets/a-icons/house.png" label="RSVP" />

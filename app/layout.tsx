@@ -122,6 +122,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				<div className="snap-start h-0" />
 				<Navbar />
 				{children}
 			</body>
