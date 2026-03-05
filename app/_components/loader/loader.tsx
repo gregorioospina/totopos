@@ -13,7 +13,7 @@ const Loader = ({ opaque, fitContainer, open }: ILoader) => {
 	const [iconOpacity, setIconOpacity] = useState(0);
 
 	const position = useMemo(() => (fitContainer ? "absolute" : "fixed"), [fitContainer]);
-	const bgColor = useMemo(() => (opaque ? "bg-ey-white/70 backdrop-blur-xs" : "bg-ey-white"), [opaque]);
+	const bgColor = useMemo(() => (opaque ? "bg-white/70 backdrop-blur-xs" : "bg-white"), [opaque]);
 	const opacity = useMemo(() => (open ? "opacity-100" : "opacity-0"), [open]);
 	const pointerEvents = useMemo(() => (open ? "pointer-events-auto" : "pointer-events-none"), [open]);
 

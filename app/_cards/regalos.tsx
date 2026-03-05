@@ -1,6 +1,7 @@
 "use client";
 
 import { Dialog } from "@/_components/dialog";
+import Loader from "@/_components/loader";
 import { GiftMessage } from "@/_interfaces";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -14,20 +15,12 @@ const Regalos = (props: IRegalos) => {
 	const [submitting, setSubmitting] = useState(false);
 	const [message, setMessage] = useState("");
 	const [author, setAuthor] = useState("");
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
+	const [isBankModalOpen, setIsBankModalOpen] = useState(false);
+	const [isArtModalOpen, setIsArtModalOpen] = useState(false);
 	const [likedMessages, setLikedMessages] = useState<Set<string>>(new Set());
 
-	useEffect(() => {
-		// Load liked messages from localStorage
-		const liked = new Set<string>();
-		for (let i = 0; i < localStorage.length; i++) {
-			const key = localStorage.key(i);
-			if (key?.startsWith("liked-")) {
-				liked.add(key);
-			}
-		}
-		setLikedMessages(liked);
-
+	const fetchMessages = () => {
 		setLoading(true);
 		fetch("/api/fetch-messages")
 			.then((s) => s.json())
@@ -55,6 +48,20 @@ const Regalos = (props: IRegalos) => {
 				setMessages(messages);
 			})
 			.finally(() => setLoading(false));
+	};
+
+	useEffect(() => {
+		// Load liked messages from localStorage
+		const liked = new Set<string>();
+		for (let i = 0; i < localStorage.length; i++) {
+			const key = localStorage.key(i);
+			if (key?.startsWith("liked-")) {
+				liked.add(key);
+			}
+		}
+		setLikedMessages(liked);
+
+		fetchMessages();
 	}, []);
 
 	const handleSubmitMessage = async () => {
@@ -75,7 +82,8 @@ const Regalos = (props: IRegalos) => {
 			if (response.ok) {
 				setMessage("");
 				setAuthor("");
-				setIsModalOpen(false);
+				setIsMessageModalOpen(false);
+				setTimeout(fetchMessages, 1000);
 			} else {
 				window.alert("Error al enviar el mensaje. Intenta de nuevo.");
 			}
@@ -143,48 +151,75 @@ const Regalos = (props: IRegalos) => {
 		);
 	};
 
+	const ButtonRow = () => (
+		<div className="flex flex-wrap gap-2">
+			<button
+				className="border border-foreground/40 text-foreground rounded-md px-4 py-2 text-sm hover:bg-foreground/10 transition-colors"
+				onClick={() => setIsBankModalOpen(true)}>
+				Aporte en efectivo
+			</button>
+			<button
+				className="border border-foreground/40 text-foreground rounded-md px-4 py-2 text-sm hover:bg-foreground/10 transition-colors"
+				onClick={() => setIsArtModalOpen(true)}>
+				Obras de arte
+			</button>
+		</div>
+	);
+
 	return (
 		<>
-			<div className="px-6 py-4 pt-20 md:py-10 md:pt-20">
-				<div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 auto-rows-fr">
-					{/* Mobile: Combined header cell spanning both columns */}
-					<div className="col-span-2 md:hidden rounded-md gap-y-2 flex flex-col">
-						<div>
-							<p className="h1">Regalos</p>
-							<p className="h3 highlight">Prontamente les contaremos cómo pueden darnos un regalito</p>
-							<p className="h5 leading-4 mt-2 highlight">Además, nos encantaría que nos regalen una anécdota, historia o consejo de su primer hogar!</p>
-						</div>
-						<div className="flex items-center h-20 justify-center">
-							<button
-								className="mt-1 bg-highlight text-white rounded-md px-4 py-2 hover:bg-highlight-dark transition-colors"
-								onClick={() => setIsModalOpen(true)}>
-								¡Déjanos un mensaje!
-							</button>
-						</div>
-					</div>
-					<div className="col-span-2 md:hidden flex flex-col justify-between">
-						<div className="flex justify-center h-40 w-full relative">
-							<Image src="https://fugvavcdkqda2ylw.public.blob.vercel-storage.com/sombrero.jpg" fill className="rounded-md object-cover" alt="regalos" />
-						</div>
-					</div>
+			<Loader fullscreen open={loading} />
 
+			<div className="px-6 py-4 pt-20 md:py-10 md:pt-25">
+				<p className="h1 md:hidden">Regalos</p>
+				{/* Mobile: Combined header cell spanning both columns */}
+				<div className="col-span-2 md:hidden rounded-md gap-y-2 flex flex-col">
+					<div>
+						<p className="h3 text-sm mt-1">
+							Como muchos saben, todavía no tenemos certeza de dónde vamos a vivir a partir de septiembre. Si quieren acompañarnos con un regalo, pueden
+							ayudarnos a construir nuestro futuro hogar con alguna de estas dos opciones:
+						</p>
+					</div>
+					<ButtonRow />
+				</div>
+				<div className="col-span-2 md:hidden h-50 flex flex-col justify-between my-4">
+					<div className="flex justify-center h-full w-full relative">
+						<Image src="https://fugvavcdkqda2ylw.public.blob.vercel-storage.com/sombrero.jpg" fill className="rounded-md object-cover" alt="regalos" />
+					</div>
+				</div>
+				<div className="col-span-2 md:hidden mb-6 flex flex-col justify-between">
+					<div className="flex flex-wrap gap-2">
+						<p className="h3 text-sm highlight mt-1">Además, nos encantaría que nos regalen una anécdota, historia o consejo de su primer hogar!</p>
+						<button
+							className="bg-highlight text-white rounded-md px-4 py-2 text-sm hover:bg-highlight-dark transition-colors"
+							onClick={() => setIsMessageModalOpen(true)}>
+							¡Déjanos un mensaje!
+						</button>
+					</div>
+				</div>
+				<div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 auto-rows-fr">
 					{/* Desktop: First message in column 1 */}
-					{!loading && messages.length > 0 && renderMessageCard(messages[0], "hidden md:block")}
+					{!loading && messages.length > 0 && renderMessageCard(messages[0], "hidden md:flex")}
 
 					{/* Desktop: Combined header cell spanning columns 2-4 */}
 					<div className="hidden md:block md:col-span-3 rounded-md p-3 mt-1 ">
 						<div className="flex justify-between gap-x-2">
 							<div className="flex flex-col">
 								<p className="h1">Regalos</p>
-								<p className="h3 highlight">Prontamente les contaremos cómo pueden darnos un regalito</p>
-								<p className="h5 leading-5 mt-2 highlight">Además, nos encantaría que nos regalen una anécdota, historia o consejo de su primer hogar!</p>
-
-								<div className="flex-1"></div>
-								<button
-									className="bg-highlight mt-2 w-50 text-white rounded-md px-4 py-2 hover:bg-highlight-dark transition-colors"
-									onClick={() => setIsModalOpen(true)}>
-									¡Déjanos un mensaje!
-								</button>
+								<p className="h3 text-sm mt-1">
+									Como muchos saben, todavía no tenemos certeza de dónde vamos a vivir a partir de septiembre. Si quieren acompañarnos con un regalo, pueden
+									ayudarnos a construir nuestro futuro hogar con alguna de estas dos opciones:
+								</p>
+								<div className="flex-1 mt-3"></div>
+								<ButtonRow />
+								<div className="flex flex-wrap gap-2 mt-3">
+									<p className="h3 text-sm highlight mt-1">Además, nos encantaría que nos regalen una anécdota, historia o consejo de su primer hogar!</p>
+									<button
+										className="bg-highlight text-white rounded-md px-4 py-2 text-sm hover:bg-highlight-dark transition-colors"
+										onClick={() => setIsMessageModalOpen(true)}>
+										¡Déjanos un mensaje!
+									</button>
+								</div>
 							</div>
 							<div className="flex justify-center">
 								<Image
@@ -221,7 +256,9 @@ const Regalos = (props: IRegalos) => {
 					)}
 				</div>
 			</div>
-			<Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)} title="Déjanos un mensaje">
+
+			{/* Message modal */}
+			<Dialog open={isMessageModalOpen} onClose={() => setIsMessageModalOpen(false)} title="Déjanos un mensaje">
 				<div className="flex flex-col gap-y-4">
 					<p className="body-small">Escríbenos un mensajito de amor. Aparecerá en la página</p>
 					<div className="flex flex-col gap-y-1">
@@ -253,7 +290,62 @@ const Regalos = (props: IRegalos) => {
 					</button>
 				</div>
 			</Dialog>
+
+			{/* Bank transfer modal */}
+			<Dialog open={isBankModalOpen} onClose={() => setIsBankModalOpen(false)} title="Aporte en efectivo">
+				<div className="flex flex-col gap-y-5 overflow-y-auto max-h-[70vh]">
+					<p className="body-small text-foreground-light">Con un aporte que usaremos donde sea que la vida nos lleve.</p>
+
+					{/* Colombia */}
+					<div className="border border-foreground/20 rounded-lg p-4 flex flex-col gap-y-2">
+						<p className="font-header text-base text-highlight font-semibold">Colombia — Nu CF</p>
+						<div className="flex flex-col gap-y-1">
+							<Row label="Titular" value="Diego Silva Silva" />
+							<Row label="Banco" value="Nu CF" />
+							<Row label="Tipo" value="Cuenta de ahorros" />
+							<Row label="Número de cuenta" value="74184135" />
+							<Row label="CC" value="1136888795" />
+							<Row label="Llave" value="1136888795" />
+						</div>
+					</div>
+
+					{/* USA */}
+					<div className="border border-foreground/20 rounded-lg p-4 flex flex-col gap-y-2">
+						<p className="font-header text-base text-highlight font-semibold">Estados Unidos</p>
+
+						<div className="flex flex-col gap-y-1 pb-3 border-b border-foreground/10">
+							<p className="body-small font-semibold text-foreground">Zelle</p>
+							<Row label="Correo" value="mc.monsalver@uniandes.edu.co" />
+						</div>
+
+						<div className="flex flex-col gap-y-1 pt-2">
+							<p className="body-small font-semibold text-foreground">Bank of America</p>
+							<Row label="Titular" value="Maria Camila Monsalve Rodriguez" />
+							<Row label="Account number" value="325210421303" />
+							<Row label="Routing number" value="121000358" />
+						</div>
+					</div>
+				</div>
+			</Dialog>
+
+			{/* Art modal */}
+			<Dialog open={isArtModalOpen} onClose={() => setIsArtModalOpen(false)} title="Obras de arte">
+				<div className="flex flex-col gap-y-4">
+					<p className="body-small">Hicimos una pequeña selección de obras de arte que nos encantaría llevar con nosotros a donde vayamos.</p>
+					<div className="border border-foreground/20 rounded-lg p-4 bg-background-2">
+						<p className="body-small text-foreground-light">Estamos en proceso de escoger las piezas. En una semana podrán ver la selección aquí.</p>
+					</div>
+				</div>
+			</Dialog>
 		</>
 	);
 };
+
+const Row = ({ label, value }: { label: string; value: string }) => (
+	<div className="flex justify-between gap-x-4 items-baseline">
+		<p className="body-small text-foreground-light shrink-0">{label}</p>
+		<p className="body-small text-foreground text-right">{value}</p>
+	</div>
+);
+
 export default Regalos;

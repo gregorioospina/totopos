@@ -1,6 +1,16 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+const MenuLink = ({ href, icon, label }: { href: string; icon: string; label: string }) => (
+	<Link
+		href={href}
+		className="text-foreground border border-foreground/30 rounded-md px-4 py-3 flex flex-col items-center gap-1.5 hover:bg-foreground/10 transition-colors text-sm">
+		<Image src={icon} width={48} height={48} alt={label} className="opacity-70" />
+		{label}
+	</Link>
+);
 
 const BottomMenu = () => {
 	const pathname = usePathname();
@@ -17,35 +27,11 @@ const BottomMenu = () => {
 			<div className="max-w-5xl mx-auto">
 				<p className="text-sm font-semibold mb-3 text-center md:text-left">Ve a</p>
 				<div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-					<Link
-						href="/regalos"
-						className="text-foreground border border-foreground/30 rounded-md px-4 py-2 text-center hover:bg-foreground/10 transition-colors text-sm">
-						Regalos
-					</Link>
-					<Link
-						href="/rsvp"
-						className="text-foreground border border-foreground/30 rounded-md px-4 py-2 text-center hover:bg-foreground/10 transition-colors text-sm">
-						RSVP
-					</Link>
-					<Link
-						href="/faq"
-						className="text-foreground border border-foreground/30 rounded-md px-4 py-2 text-center hover:bg-foreground/10 transition-colors text-sm">
-						FAQ
-					</Link>
-					{isHome && (
-						<Link
-							href="/pereira"
-							className="text-foreground border border-foreground/30 rounded-md px-4 py-2 text-center hover:bg-foreground/10 transition-colors text-sm">
-							Pereira
-						</Link>
-					)}
-					{isPereira && (
-						<Link
-							href="/"
-							className="text-foreground border border-foreground/30 rounded-md px-4 py-2 text-center hover:bg-foreground/10 transition-colors text-sm">
-							Diego y Maca
-						</Link>
-					)}
+					<MenuLink href="/regalos" icon="/assets/a-icons/gifts.png" label="Regalos" />
+					<MenuLink href="/rsvp" icon="/assets/a-icons/house.png" label="RSVP" />
+					<MenuLink href="/faq" icon="/assets/a-icons/coffeee.png" label="FAQ" />
+					{isHome && <MenuLink href="/pereira" icon="/assets/a-icons/travel.png" label="Pereira" />}
+					{isPereira && <MenuLink href="/" icon="/assets/a-icons/house.png" label="Diego y Maca" />}
 				</div>
 			</div>
 		</div>
