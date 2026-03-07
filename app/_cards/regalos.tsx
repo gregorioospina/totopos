@@ -156,7 +156,7 @@ const Regalos = (props: IRegalos) => {
 			<button
 				className="border border-foreground/40 text-foreground rounded-md px-4 py-2 text-sm hover:bg-foreground/10 transition-colors"
 				onClick={() => setIsBankModalOpen(true)}>
-				Aporte en efectivo
+				Info bancaria
 			</button>
 			<button
 				className="border border-foreground/40 text-foreground rounded-md px-4 py-2 text-sm hover:bg-foreground/10 transition-colors"
