@@ -58,6 +58,12 @@ const Contactos = (props: IContactos) => {
 								+57 311 304 2612
 							</a>
 						</div>
+						<div>
+							<p className="body font-semibold">Hugo Peluquero</p>
+							<a target="__blank" href="https://wa.me/+573147804148" className="">
+								+57 314 780 4148
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
