@@ -242,7 +242,7 @@ const ArtListing = () => {
 						<div>
 							<p className="h2">¿Quieres aportar a esta obra?</p>
 							<p className="body-small text-foreground-light mt-2">
-								Cuéntanos cuánto quieres aportar, guardaremos tu solicitud y próntamente una persona de nuestro equipo se va a poner en contacto contigo para
+								Cuéntanos cuánto quieres aportar, guardaremos tu solicitud y prontamente una persona de nuestro equipo se va a poner en contacto contigo para
 								resolver el pago.
 							</p>
 							<p className="body-small text-highlight mt-1">Tu aporte quedará guardado.</p>
