@@ -37,7 +37,7 @@ const ArtListing = () => {
 	const [dialogPhase, setDialogPhase] = useState<"info" | "commit">("info");
 	const [commitName, setCommitName] = useState("");
 	const [commitPhone, setCommitPhone] = useState("");
-	const [commitAmount, setCommitAmount] = useState(200000);
+	const [commitAmount, setCommitAmount] = useState("");
 	const [submitting, setSubmitting] = useState(false);
 	const [snackbar, setSnackbar] = useState({ open: false, message: "" });
 
@@ -79,14 +79,14 @@ const ArtListing = () => {
 		setDialogPhase("info");
 		setCommitName("");
 		setCommitPhone("");
-		setCommitAmount(100);
+		setCommitAmount("");
 	};
 
 	const handleCommit = async () => {
 		if (!selectedPiece || !commitName.trim() || !commitPhone.trim()) return;
 		setSubmitting(true);
 		try {
-			const newPct = selectedPiece.percentageCommited + (commitAmount / selectedPiece.price) * 100;
+			const newPct = selectedPiece.percentageCommited + (Number(commitAmount) / selectedPiece.price) * 100;
 			const response = await fetch("/api/upsert-art-commitment", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -270,16 +270,16 @@ const ArtListing = () => {
 						</div>
 						<div className="flex flex-col gap-y-1">
 							<label className="body-small text-foreground">Monto a aportar (COP)</label>
-							<select
-								className="border border-foreground-light rounded-md p-2 body focus:outline-none focus:border-foreground bg-background"
+							<input
+								className="border border-foreground-light rounded-md p-2 body focus:outline-none focus:border-foreground"
 								value={commitAmount}
-								onChange={(e) => setCommitAmount(Number(e.target.value))}>
-								{AMOUNT_OPTIONS.map((amt) => (
-									<option key={amt} value={amt}>
-										${amt.toLocaleString("en-US")} COP
-									</option>
-								))}
-							</select>
+								onChange={(e) => {
+									if (!isNaN(Number(e.target.value))) {
+										setCommitAmount(e.target.value);
+									}
+								}}
+								placeholder="eg. 600000 (en pesos colombianos, sin comas ni puntos)"
+							/>
 						</div>
 					</div>
 				)}
