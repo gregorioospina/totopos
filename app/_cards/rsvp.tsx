@@ -319,7 +319,6 @@ export default function RSVP() {
 											className="peer h-5 w-5 cursor-pointer appearance-none rounded-full border border-foreground/30 checked:border-foreground/40 transition-all"
 											onChange={() => {
 												const index = invitationMap.get(name);
-												console.log("Selected name:", name, "Index in invitationMap:", index);
 												if (index !== undefined) {
 													handleUserSelect(index);
 												}

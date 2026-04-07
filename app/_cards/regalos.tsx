@@ -4,6 +4,7 @@ import { Dialog } from "@/_components/dialog";
 import Loader from "@/_components/loader";
 import { GiftMessage } from "@/_interfaces";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface IRegalos {}
@@ -17,8 +18,8 @@ const Regalos = (props: IRegalos) => {
 	const [author, setAuthor] = useState("");
 	const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 	const [isBankModalOpen, setIsBankModalOpen] = useState(false);
-	const [isArtModalOpen, setIsArtModalOpen] = useState(false);
 	const [likedMessages, setLikedMessages] = useState<Set<string>>(new Set());
+	const router = useRouter();
 
 	const fetchMessages = () => {
 		setLoading(true);
@@ -43,7 +44,6 @@ const Regalos = (props: IRegalos) => {
 							index: Number(a[0]),
 						};
 					});
-				console.log("Fetched Messages:", messages, maxIndex);
 				setMaxMessageIndex(maxIndex);
 				setMessages(messages);
 			})
@@ -72,7 +72,6 @@ const Regalos = (props: IRegalos) => {
 
 		setSubmitting(true);
 		try {
-			console.log("Submitting message:", { message, author, index: maxMessageIndex });
 			const response = await fetch("/api/add-message", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -160,7 +159,7 @@ const Regalos = (props: IRegalos) => {
 			</button>
 			<button
 				className="border border-foreground/40 text-foreground rounded-md px-4 py-2 text-sm hover:bg-foreground/10 transition-colors"
-				onClick={() => setIsArtModalOpen(true)}>
+				onClick={() => router.push("/art-listing")}>
 				Obras de arte
 			</button>
 		</div>
@@ -324,16 +323,6 @@ const Regalos = (props: IRegalos) => {
 							<Row label="Account number" value="325210421303" />
 							<Row label="Routing number" value="121000358" />
 						</div>
-					</div>
-				</div>
-			</Dialog>
-
-			{/* Art modal */}
-			<Dialog open={isArtModalOpen} onClose={() => setIsArtModalOpen(false)} title="Obras de arte">
-				<div className="flex flex-col gap-y-4">
-					<p className="body-small">Hicimos una pequeña selección de obras de arte que nos encantaría llevar con nosotros a donde vayamos.</p>
-					<div className="border border-foreground/20 rounded-lg p-4 bg-background-2">
-						<p className="body-small text-foreground-light">Estamos en proceso de escoger las piezas. En una semana podrán ver la selección aquí.</p>
 					</div>
 				</div>
 			</Dialog>

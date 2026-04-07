@@ -42,10 +42,10 @@ export const Dialog = (props: PropsDialog) => {
 				id={props.containerId}
 				className={`min-h-30% max-h-90% duration-1200 ${
 					title ? "bg-white" : ""
-				} relative z-30 w-[95%] max-w-[500px] grid-cols-1 grid-rows-[15%_85%] rounded-xl p-4 transition-[max-height] md:max-h-95% md:w-1/3 md:min-w-[500px] md:p-6 ${containerClassName} `}
+				} relative z-30 w-[95%] max-w-[500px] flex flex-col rounded-xl p-4 transition-[max-height] md:max-h-95% md:w-1/3 md:min-w-[500px] md:p-6 ${containerClassName} `}
 				onClick={(e) => e.stopPropagation()}>
 				{(title || subtitle) && (
-					<div className={`mb-4 mt-0 flex flex-col pb-3 ${!noDivider && "border-b-[1px] border-b-stone-700/20"}`}>
+					<div className={`mb-4 mt-0 flex flex-col pb-3 shrink-0 ${!noDivider && "border-b-[1px] border-b-stone-700/20"}`}>
 						<p suppressHydrationWarning className="text-xl font-bold leading-6 text-stone-900 md:text-2xl">
 							{title}
 						</p>
@@ -54,8 +54,12 @@ export const Dialog = (props: PropsDialog) => {
 						</p>
 					</div>
 				)}
-				{children}
-				{footer && <div className="absolute bottom-0 left-0 h-24 w-full bg-dialog-bg"></div>}
+				<div className="overflow-y-auto flex-1">{children}</div>
+				{footer && (
+					<div className="shrink-0 pt-3 mt-3 border-t border-foreground/10">
+						{footer}
+					</div>
+				)}
 			</div>
 		</div>
 	) : null;

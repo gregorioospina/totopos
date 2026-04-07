@@ -44,7 +44,6 @@ const FAQ = () => {
 						};
 					})
 					.filter((f: IFAQ) => !!f.answer);
-				console.log("Fetched FAQs:", faqs, maxIndex);
 				setMaxQuestionIndex(maxIndex);
 				setFaqs(faqs);
 			})
@@ -59,7 +58,6 @@ const FAQ = () => {
 
 		setSubmitting(true);
 		try {
-			console.log("Submitting question:", { question, askedBy, index: maxQuestionIndex });
 			const response = await fetch("/api/add-faq", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },

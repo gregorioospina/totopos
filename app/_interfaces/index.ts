@@ -25,3 +25,21 @@ export type GiftMessage = {
 	index: number;
 	likes: number;
 };
+
+export type ArtPiece = {
+	id: string;
+	img: string;
+	name: string;
+	specs: string;
+	artistId: string;
+	price: number;
+	percentageCommited: number;
+	index: number;
+};
+
+export type Artist = {
+	id: string;
+	name: string;
+	bio: string;
+	img: string;
+};
