@@ -9,8 +9,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const AMOUNT_OPTIONS = [200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000, 1100000, 1200000, 1300000, 1400000, 1500000];
-
 const ProgressBar = ({ percentage }: { percentage: number }) => {
 	const display = Math.min(percentage, 100);
 	return (
@@ -177,7 +175,8 @@ const ArtListing = () => {
 				</div>
 				<p className="h1 mb-2">Obras de Arte</p>
 				<p className="body text-foreground-light mb-10">
-					Una selección de piezas que nos encantaría llevar con nosotros a donde vayamos. Si quieres aportar a la adquisición de una obra, haz clic sobre ella.
+					Una selección de piezas que nos encantaría llevar con nosotros a donde vayamos. Todas de artistas colombianos que nos recuerden el hogar. Si quieres
+					aportar a la adquisición de una obra, haz clic sobre ella.
 				</p>
 
 				{artPieces.length === 0 && !loading && (
